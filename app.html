@@ -305,6 +305,10 @@
         ? "message bot"
         : "message system");
 
+    if (sender === "bot") {
+    text = stripMarkdown(text);
+    }
+    
     div.className = className;
     div.textContent = text;
     chatLog.appendChild(div);
