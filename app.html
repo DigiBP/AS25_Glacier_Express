@@ -286,6 +286,15 @@
   const uploadBtn = document.getElementById("upload-btn");
   const ocrResultBox = document.getElementById("ocr-result");
 
+  function stripMarkdown(text) {
+  // remove bold/italic markers
+  let t = text.replace(/\*\*(.*?)\*\*/g, '$1');
+  t = t.replace(/\*(.*?)\*/g, '$1');
+  // turn "- " at the start of a line into a simple bullet
+  t = t.replace(/^- /gm, '• ');
+  return t;
+  }
+
   function addMessage(sender, text, typeOverride) {
     const div = document.createElement("div");
     const className =
@@ -308,10 +317,10 @@
   }
 
   // Voiceflow DM API
-  async function sendToVoiceflow(text) {
+  async function sendToVoiceflow(text, showInChat = true) {
     setLoading(true);
 
-    if (text) {
+    if (showInChat && text) {
       addMessage("user", text);
     }
 
@@ -441,7 +450,8 @@
       const wrappedMessage =
         "Here is my prescription information from the upload button:\n\n" + text;
 
-      await sendToVoiceflow(wrappedMessage);
+      await sendToVoiceflow(wrappedMessage, false);
+      addMessage("system", "Prescription uploaded. I am processing it now.");
     } catch (error) {
       console.error("OCR error:", error);
       addMessage(
