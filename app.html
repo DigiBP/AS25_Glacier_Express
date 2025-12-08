@@ -308,7 +308,7 @@
     if (sender === "bot") {
     text = stripMarkdown(text);
     }
-    
+
     div.className = className;
     div.textContent = text;
     chatLog.appendChild(div);
@@ -450,9 +450,6 @@
     try {
       const text = await runOCR(file);
       ocrResultBox.textContent = text || "Empty OCR result.";
-
-      const wrappedMessage =
-        "Here is my prescription information from the upload button:\n\n" + text;
 
       await sendToVoiceflow(wrappedMessage, false);
       addMessage("system", "Prescription uploaded. I am processing it now.");
