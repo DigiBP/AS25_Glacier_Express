@@ -1,0 +1,88 @@
+{
+  "components": [
+    {
+      "label": "Patient Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0bn8dmc",
+        "columns": null
+      },
+      "id": "Field_1bb9yii",
+      "key": "patientName",
+      "disabled": true
+    },
+    {
+      "label": "Patient Email",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0zx0jsc",
+        "columns": null
+      },
+      "id": "Field_04xmj0q",
+      "key": "patientEmail",
+      "disabled": true
+    },
+    {
+      "label": "DOB",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0sqfwvg",
+        "columns": null
+      },
+      "id": "Field_0w5tzis",
+      "key": "patientDOB",
+      "disabled": true
+    },
+    {
+      "label": "Requested Service",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_10vtmla",
+        "columns": null
+      },
+      "id": "Field_1exv0qp",
+      "key": "requestedService",
+      "disabled": true
+    },
+    {
+      "subtype": "datetime",
+      "dateLabel": "Appointment Date",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_0lzfgcq",
+        "columns": null
+      },
+      "id": "Field_0zba4a8",
+      "key": "appointmentDateTime",
+      "timeLabel": "Time",
+      "timeSerializingFormat": "utc_offset",
+      "timeInterval": 15,
+      "disabled": true
+    },
+    {
+      "label": "Appointment Confirmation",
+      "values": [
+        {
+          "label": "Confirm Appointment",
+          "value": "CONFIRMED"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0nqzvzk",
+        "columns": null
+      },
+      "id": "Field_0cufq60",
+      "key": "appointmentConfirmation"
+    }
+  ],
+  "type": "default",
+  "id": "appointmentForm",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.39.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.23.0",
+  "schemaVersion": 19
+}

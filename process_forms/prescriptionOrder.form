@@ -1,0 +1,120 @@
+{
+  "components": [
+    {
+      "label": "Patient Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0aorbk0",
+        "columns": null
+      },
+      "id": "Field_1k39cps",
+      "key": "patientName",
+      "disabled": true
+    },
+    {
+      "label": "Patient Email",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1hsiafl",
+        "columns": null
+      },
+      "id": "Field_01ht5mq",
+      "key": "patientEmail",
+      "disabled": true
+    },
+    {
+      "label": "DOB",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_19oftjk",
+        "columns": null
+      },
+      "id": "Field_1bsa5d4",
+      "key": "patientDOB",
+      "disabled": true
+    },
+    {
+      "label": "Prescribing Doctor",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0uqja4t",
+        "columns": null
+      },
+      "id": "Field_0pm1lnx",
+      "key": "drName",
+      "disabled": true
+    },
+    {
+      "label": "Medication",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0xljuvd",
+        "columns": null
+      },
+      "id": "Field_17ui53i",
+      "key": "orderedMedicationName",
+      "disabled": true
+    },
+    {
+      "label": "Dispensing Amount",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0rijqdg",
+        "columns": null
+      },
+      "id": "Field_1gj1tc9",
+      "key": "dispensingAmount",
+      "disabled": true
+    },
+    {
+      "label": "Refill",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0rf2y7l",
+        "columns": null
+      },
+      "id": "Field_176qhnn",
+      "key": "refillAmount",
+      "disabled": true
+    },
+    {
+      "label": "Pharmacist Approval",
+      "values": [
+        {
+          "label": "Approve",
+          "value": "APPROVE"
+        },
+        {
+          "label": "Reject",
+          "value": "REJECT"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1pwh74f",
+        "columns": null
+      },
+      "id": "Field_1x26e0s",
+      "key": "pharmacistApproval"
+    },
+    {
+      "label": "Comments",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0soygrj",
+        "columns": null
+      },
+      "id": "Field_0t04qmu",
+      "key": "pharmacistComments"
+    }
+  ],
+  "type": "default",
+  "id": "prescriptionOrder",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.39.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.23.0",
+  "schemaVersion": 19
+}

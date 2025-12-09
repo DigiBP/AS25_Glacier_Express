@@ -1,0 +1,76 @@
+{
+  "components": [
+    {
+      "label": "Amount paid",
+      "type": "number",
+      "layout": {
+        "row": "Row_1ysh6ig",
+        "columns": null
+      },
+      "id": "Field_1mdavgm",
+      "key": "paymentAmount",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Payment method",
+      "values": [
+        {
+          "label": "Cash",
+          "value": "CASH"
+        },
+        {
+          "label": "Card",
+          "value": "CARD"
+        },
+        {
+          "label": "Insurance",
+          "value": "INSURANCE"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1be61hp",
+        "columns": null
+      },
+      "id": "Field_1s8ivw5",
+      "key": "paymentMethod",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Payment status",
+      "values": [
+        {
+          "label": "Paid",
+          "value": "PAID"
+        },
+        {
+          "label": "Not paid",
+          "value": "NOT_PAID"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0lnpp17",
+        "columns": null
+      },
+      "id": "Field_0fkl5u6",
+      "key": "paymentStatus",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "paymentProcessing",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.39.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.23.0",
+  "schemaVersion": 19
+}

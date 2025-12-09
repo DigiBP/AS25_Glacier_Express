@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<semantic:definitions xmlns:semantic="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdmn="https://www.omg.org/spec/SDMN/" xmlns:dmn="https://www.omg.org/spec/DMN/20240513/MODEL/" xmlns:trisobpmn="http://www.trisotech.com/2014/triso/bpmn" xmlns:triso="http://www.trisotech.com/2015/triso/modeling" xmlns:openapi="https://openapis.org/omg/extension/1.0" xmlns:boxedext="https://www.trisotech.com/spec/DMN/20191111/EXT/" xmlns:tc="http://www.omg.org/spec/DMN/20160719/testcase" xmlns:rss="http://purl.org/rss/2.0/" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:trisofeed="http://trisotech.com/feed" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:feel="https://www.omg.org/spec/DMN/20240513/FEEL/" xmlns:drools="http://www.jboss.org/drools" xmlns:asyncapi="https://asyncapi.org/omg/extension/1.0" xmlns:i18n="http://www.omg.org/spec/BPMN/non-normative/extensions/i18n/1.0" xmlns="http://www.trisotech.com/definitions/_543fb6e9-74f1-4caf-9055-499d5666f956" id="_543fb6e9-74f1-4caf-9055-499d5666f956" name="as-isV2" targetNamespace="http://www.trisotech.com/definitions/_543fb6e9-74f1-4caf-9055-499d5666f956" exporter="Camunda Modeler" exporterVersion="5.39.0" xml:lang="en" triso:translationLanguages="" trisobpmn:logoChoice="Default">
+  <semantic:itemDefinition id="_triso-default-bpmnItemDefinition-string_id" structureRef="feel:string" triso:basicType="true" triso:definitionType="http://www.trisotech.com/2015/triso/modeling/ItemDefinitionType" triso:name="triso_string" />
+  <semantic:itemDefinition id="_triso-default-bpmnItemDefinition-Any_id" structureRef="feel:Any" triso:basicType="true" triso:definitionType="http://www.trisotech.com/2015/triso/modeling/ItemDefinitionType" triso:name="triso_Any" />
+  <semantic:collaboration id="Collaboration_016czy9">
+    <semantic:participant id="Participant_175dgh9" name="Patient" triso:readOnly="false" />
+    <semantic:participant id="Participant_1ekq0k1" name="Pharmacy" processRef="_b35adcd0-2e8e-47fe-b55c-372cfc983a17" triso:readOnly="false" />
+    <semantic:messageFlow id="Flow_1c492xf" sourceRef="Participant_175dgh9" targetRef="Event_1bnfk30" triso:readOnly="false" />
+    <semantic:messageFlow id="Flow_1ndbdc8" sourceRef="Event_1sszf61" targetRef="Participant_175dgh9" triso:readOnly="false" />
+  </semantic:collaboration>
+  <semantic:process id="_b35adcd0-2e8e-47fe-b55c-372cfc983a17" isClosed="false" isExecutable="false" triso:readOnly="false" triso:collectEnds="true">
+    <semantic:laneSet>
+      <semantic:lane id="Lane_0x2xsty" name="Pharmacy Technician" triso:readOnly="false">
+        <semantic:flowNodeRef>Event_1bnfk30</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_1f9yytb</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Gateway_1nmtp7b</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_1bk1xgn</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Gateway_0nj2lxi</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_0cgbw75</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Gateway_03ezziz</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_1kxjfsg</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_0eswmuf</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_1oa1g0d</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_1axon19</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Event_1sszf61</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_0fvibi9</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Gateway_1y0kbbm</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Event_0bu5ltp</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_1vqv31t</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Gateway_0fnyrhd</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_0q0ihu6</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Event_1c0e0sf</semantic:flowNodeRef>
+        <semantic:flowNodeRef>_4b76be38-c790-47f5-a491-6dc8b49c9c69</semantic:flowNodeRef>
+        <semantic:flowNodeRef>_b7499f05-ae06-45f0-b90a-46beaf688a5b</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_12k99rn</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Event_0ksk9xz</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_1t1vcfh</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Activity_1uhq4ps</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Gateway_0ozjby2</semantic:flowNodeRef>
+        <semantic:flowNodeRef>Event_1p1ojes</semantic:flowNodeRef>
+      </semantic:lane>
+    </semantic:laneSet>
+    <semantic:startEvent id="Event_1bnfk30" name="Patient arrives" triso:readOnly="false">
+      <semantic:outgoing>Flow_0cdzpm8</semantic:outgoing>
+      <semantic:messageEventDefinition id="_b58fc9ff-5124-41d2-ab40-3cfb6f44c836" />
+    </semantic:startEvent>
+    <semantic:task id="Activity_1f9yytb" name="Assess patient need" triso:readOnly="false">
+      <semantic:incoming>Flow_0cdzpm8</semantic:incoming>
+      <semantic:outgoing>Flow_18jy2rq</semantic:outgoing>
+    </semantic:task>
+    <semantic:exclusiveGateway id="Gateway_1nmtp7b" name="Purpose of visit?" gatewayDirection="Diverging" triso:readOnly="false">
+      <semantic:incoming>Flow_18jy2rq</semantic:incoming>
+      <semantic:outgoing>Flow_0okyipw</semantic:outgoing>
+      <semantic:outgoing>Flow_1soqotr</semantic:outgoing>
+      <semantic:outgoing>Flow_1oyi759</semantic:outgoing>
+      <semantic:outgoing>Flow_018g5no</semantic:outgoing>
+      <semantic:outgoing>Flow_19wqsnr</semantic:outgoing>
+    </semantic:exclusiveGateway>
+    <semantic:task id="Activity_1bk1xgn" name="Verify prescription" triso:readOnly="false">
+      <semantic:incoming>Flow_0okyipw</semantic:incoming>
+      <semantic:outgoing>Flow_1fthm7n</semantic:outgoing>
+    </semantic:task>
+    <semantic:exclusiveGateway id="Gateway_0nj2lxi" name="Issues found?" gatewayDirection="Diverging" triso:readOnly="false">
+      <semantic:incoming>Flow_1fthm7n</semantic:incoming>
+      <semantic:outgoing>Flow_0vuvida</semantic:outgoing>
+      <semantic:outgoing>Flow_1tnqrt0</semantic:outgoing>
+    </semantic:exclusiveGateway>
+    <semantic:task id="Activity_0cgbw75" name="Health Screening Service" triso:readOnly="false">
+      <semantic:incoming>Flow_018g5no</semantic:incoming>
+      <semantic:outgoing>Flow_04a17a0</semantic:outgoing>
+    </semantic:task>
+    <semantic:exclusiveGateway id="Gateway_03ezziz" name="stock available?" gatewayDirection="Diverging" triso:readOnly="false">
+      <semantic:incoming>Flow_0e7202k</semantic:incoming>
+      <semantic:outgoing>Flow_13x2blp</semantic:outgoing>
+      <semantic:outgoing>Flow_0zirprz</semantic:outgoing>
+    </semantic:exclusiveGateway>
+    <semantic:task id="Activity_1kxjfsg" name="Contact physician" triso:readOnly="false">
+      <semantic:incoming>Flow_1tnqrt0</semantic:incoming>
+      <semantic:outgoing>_954ae0db-beaa-4a1c-bad5-9e4b5308d922</semantic:outgoing>
+    </semantic:task>
+    <semantic:task id="Activity_0eswmuf" name="Check stock" triso:readOnly="false">
+      <semantic:incoming>Flow_19wqsnr</semantic:incoming>
+      <semantic:incoming>Flow_0vuvida</semantic:incoming>
+      <semantic:incoming>Flow_0whu2j9</semantic:incoming>
+      <semantic:incoming>_f5d60ab0-8eea-4186-b08c-59d9cafb39f1</semantic:incoming>
+      <semantic:outgoing>Flow_0e7202k</semantic:outgoing>
+    </semantic:task>
+    <semantic:task id="Activity_1oa1g0d" name="Prepare Medication &#38; Counsel Patient" triso:readOnly="false">
+      <semantic:incoming>Flow_13x2blp</semantic:incoming>
+      <semantic:incoming>Flow_0st1t6n</semantic:incoming>
+      <semantic:outgoing>Flow_1dhkee1</semantic:outgoing>
+    </semantic:task>
+    <semantic:task id="Activity_1axon19" name="Collect payment or insurance details" triso:readOnly="false">
+      <semantic:incoming>Flow_1dhkee1</semantic:incoming>
+      <semantic:outgoing>Flow_1r4y559</semantic:outgoing>
+    </semantic:task>
+    <semantic:endEvent id="Event_1sszf61" name="Handover medication" triso:readOnly="false">
+      <semantic:incoming>Flow_1r4y559</semantic:incoming>
+      <semantic:messageEventDefinition id="_25ecdd92-820b-4db7-8f5d-e255531d6960" />
+    </semantic:endEvent>
+    <semantic:task id="Activity_0fvibi9" name="Check for alternative" triso:readOnly="false">
+      <semantic:incoming>Flow_0zirprz</semantic:incoming>
+      <semantic:outgoing>Flow_0lchkyh</semantic:outgoing>
+    </semantic:task>
+    <semantic:exclusiveGateway id="Gateway_1y0kbbm" name="Available?" gatewayDirection="Diverging" triso:readOnly="false">
+      <semantic:incoming>Flow_0lchkyh</semantic:incoming>
+      <semantic:outgoing>Flow_033hlvl</semantic:outgoing>
+      <semantic:outgoing>Flow_0f49xvo</semantic:outgoing>
+    </semantic:exclusiveGateway>
+    <semantic:endEvent id="Event_0bu5ltp" name="Health screening performed" triso:readOnly="false">
+      <semantic:incoming>Flow_04a17a0</semantic:incoming>
+    </semantic:endEvent>
+    <semantic:task id="Activity_1vqv31t" name="Suggest alternative" triso:readOnly="false">
+      <semantic:incoming>Flow_0f49xvo</semantic:incoming>
+      <semantic:outgoing>Flow_1bfi3m6</semantic:outgoing>
+    </semantic:task>
+    <semantic:exclusiveGateway id="Gateway_0fnyrhd" name="Accepted?" gatewayDirection="Diverging" triso:readOnly="false">
+      <semantic:incoming>Flow_1bfi3m6</semantic:incoming>
+      <semantic:outgoing>Flow_0gb59hd</semantic:outgoing>
+      <semantic:outgoing>Flow_0st1t6n</semantic:outgoing>
+    </semantic:exclusiveGateway>
+    <semantic:task id="Activity_0q0ihu6" name="Order medication" triso:readOnly="false">
+      <semantic:incoming>Flow_033hlvl</semantic:incoming>
+      <semantic:incoming>Flow_0gb59hd</semantic:incoming>
+      <semantic:outgoing>Flow_0dy4qwf</semantic:outgoing>
+    </semantic:task>
+    <semantic:endEvent id="Event_1c0e0sf" name="Medication ordered" triso:readOnly="false">
+      <semantic:incoming>Flow_0dy4qwf</semantic:incoming>
+    </semantic:endEvent>
+    <semantic:exclusiveGateway id="_4b76be38-c790-47f5-a491-6dc8b49c9c69" name="Issue resolved?" gatewayDirection="Diverging" triso:readOnly="false">
+      <semantic:incoming>_954ae0db-beaa-4a1c-bad5-9e4b5308d922</semantic:incoming>
+      <semantic:outgoing>_f5d60ab0-8eea-4186-b08c-59d9cafb39f1</semantic:outgoing>
+      <semantic:outgoing>_3e69d3af-ed84-4a6b-b8e0-f17d8555930b</semantic:outgoing>
+    </semantic:exclusiveGateway>
+    <semantic:endEvent id="_b7499f05-ae06-45f0-b90a-46beaf688a5b" name="Cancel Order" triso:readOnly="false">
+      <semantic:incoming>_3e69d3af-ed84-4a6b-b8e0-f17d8555930b</semantic:incoming>
+    </semantic:endEvent>
+    <semantic:sequenceFlow id="Flow_0cdzpm8" isImmediate="false" sourceRef="Event_1bnfk30" targetRef="Activity_1f9yytb" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_18jy2rq" isImmediate="false" sourceRef="Activity_1f9yytb" targetRef="Gateway_1nmtp7b" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_0okyipw" name="Prescription/refill" isImmediate="false" sourceRef="Gateway_1nmtp7b" targetRef="Activity_1bk1xgn" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_1soqotr" name="Vaccination" isImmediate="false" sourceRef="Gateway_1nmtp7b" targetRef="Activity_12k99rn" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_1oyi759" name="Symptom check" isImmediate="false" sourceRef="Gateway_1nmtp7b" targetRef="Activity_1t1vcfh" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_018g5no" name="Health screening" isImmediate="false" sourceRef="Gateway_1nmtp7b" targetRef="Activity_0cgbw75" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_19wqsnr" name="OTC medication" isImmediate="false" sourceRef="Gateway_1nmtp7b" targetRef="Activity_0eswmuf" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_1fthm7n" isImmediate="false" sourceRef="Activity_1bk1xgn" targetRef="Gateway_0nj2lxi" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_0vuvida" name="no" isImmediate="false" sourceRef="Gateway_0nj2lxi" targetRef="Activity_0eswmuf" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_1tnqrt0" name="yes" isImmediate="false" sourceRef="Gateway_0nj2lxi" targetRef="Activity_1kxjfsg" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_0e7202k" isImmediate="false" sourceRef="Activity_0eswmuf" targetRef="Gateway_03ezziz" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_13x2blp" name="yes" isImmediate="false" sourceRef="Gateway_03ezziz" targetRef="Activity_1oa1g0d" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_0zirprz" name="no" isImmediate="false" sourceRef="Gateway_03ezziz" targetRef="Activity_0fvibi9" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_1dhkee1" isImmediate="false" sourceRef="Activity_1oa1g0d" targetRef="Activity_1axon19" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_1r4y559" isImmediate="false" sourceRef="Activity_1axon19" targetRef="Event_1sszf61" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_033hlvl" name="no" isImmediate="false" sourceRef="Gateway_1y0kbbm" targetRef="Activity_0q0ihu6" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_0lchkyh" isImmediate="false" sourceRef="Activity_0fvibi9" targetRef="Gateway_1y0kbbm" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_0whu2j9" isImmediate="false" sourceRef="Gateway_0ozjby2" targetRef="Activity_0eswmuf" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_04a17a0" isImmediate="false" sourceRef="Activity_0cgbw75" targetRef="Event_0bu5ltp" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_1bfi3m6" isImmediate="false" sourceRef="Activity_1vqv31t" targetRef="Gateway_0fnyrhd" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_0f49xvo" name="yes" isImmediate="false" sourceRef="Gateway_1y0kbbm" targetRef="Activity_1vqv31t" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_0dy4qwf" isImmediate="false" sourceRef="Activity_0q0ihu6" targetRef="Event_1c0e0sf" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_0gb59hd" name="no" isImmediate="false" sourceRef="Gateway_0fnyrhd" targetRef="Activity_0q0ihu6" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_0st1t6n" name="yes" isImmediate="false" sourceRef="Gateway_0fnyrhd" targetRef="Activity_1oa1g0d" triso:readOnly="false" />
+    <semantic:sequenceFlow id="_954ae0db-beaa-4a1c-bad5-9e4b5308d922" sourceRef="Activity_1kxjfsg" targetRef="_4b76be38-c790-47f5-a491-6dc8b49c9c69" triso:readOnly="false" />
+    <semantic:sequenceFlow id="_f5d60ab0-8eea-4186-b08c-59d9cafb39f1" name="Yes" sourceRef="_4b76be38-c790-47f5-a491-6dc8b49c9c69" targetRef="Activity_0eswmuf" triso:readOnly="false" />
+    <semantic:sequenceFlow id="_3e69d3af-ed84-4a6b-b8e0-f17d8555930b" name="No" sourceRef="_4b76be38-c790-47f5-a491-6dc8b49c9c69" targetRef="_b7499f05-ae06-45f0-b90a-46beaf688a5b" triso:readOnly="false" />
+    <semantic:task id="Activity_12k99rn" name="Vaccination Service" triso:readOnly="false">
+      <semantic:incoming>Flow_1soqotr</semantic:incoming>
+      <semantic:outgoing>Flow_15rmq6p</semantic:outgoing>
+    </semantic:task>
+    <semantic:endEvent id="Event_0ksk9xz" name="Vaccination service provided" triso:readOnly="false">
+      <semantic:incoming>Flow_15rmq6p</semantic:incoming>
+    </semantic:endEvent>
+    <semantic:sequenceFlow id="Flow_15rmq6p" isImmediate="false" sourceRef="Activity_12k99rn" targetRef="Event_0ksk9xz" triso:readOnly="false" />
+    <semantic:task id="Activity_1t1vcfh" name="Symptom Check" triso:readOnly="false">
+      <semantic:incoming>Flow_1oyi759</semantic:incoming>
+      <semantic:outgoing>Flow_0urlrpt</semantic:outgoing>
+    </semantic:task>
+    <semantic:task id="Activity_1uhq4ps" name="Provide advice" triso:readOnly="false">
+      <semantic:incoming>Flow_0urlrpt</semantic:incoming>
+      <semantic:outgoing>Flow_0vryt7h</semantic:outgoing>
+    </semantic:task>
+    <semantic:exclusiveGateway id="Gateway_0ozjby2" name="Medication suitable?" gatewayDirection="Diverging" triso:readOnly="false">
+      <semantic:incoming>Flow_0vryt7h</semantic:incoming>
+      <semantic:outgoing>Flow_0whu2j9</semantic:outgoing>
+      <semantic:outgoing>Flow_1agnatt</semantic:outgoing>
+    </semantic:exclusiveGateway>
+    <semantic:sequenceFlow id="Flow_0urlrpt" isImmediate="false" sourceRef="Activity_1t1vcfh" targetRef="Activity_1uhq4ps" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_0vryt7h" isImmediate="false" sourceRef="Activity_1uhq4ps" targetRef="Gateway_0ozjby2" triso:readOnly="false" />
+    <semantic:sequenceFlow id="Flow_1agnatt" isImmediate="false" sourceRef="Gateway_0ozjby2" targetRef="Event_1p1ojes" triso:readOnly="false" />
+    <semantic:endEvent id="Event_1p1ojes" name="Refer to doctor" triso:readOnly="false">
+      <semantic:incoming>Flow_1agnatt</semantic:incoming>
+    </semantic:endEvent>
+    <semantic:textAnnotation id="_ac9c5d4f-5b25-440c-9949-af89b9f8f106">
+      <semantic:text>This is a knowledge intensive task
+-Human interaction</semantic:text>
+    </semantic:textAnnotation>
+  </semantic:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1" name="Page 1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_016czy9" trisobpmn:diagramWidth="2320" trisobpmn:diagramHeight="1610">
+      <bpmndi:BPMNShape id="Participant_0vzxq7x_di" bpmnElement="Participant_175dgh9" isHorizontal="true" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="160" y="40" width="2100" height="70" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_1ekq0k1_di" bpmnElement="Participant_1ekq0k1" isHorizontal="true" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="160" y="180" width="2100" height="800" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0x2xsty_di" bpmnElement="Lane_0x2xsty" isHorizontal="true" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="190" y="180" width="2070" height="800" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1bnfk30_di" bpmnElement="Event_1bnfk30" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="244" y="304" width="32" height="32" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="205" y="345" width="110" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1f9yytb_di" bpmnElement="Activity_1f9yytb" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="370" y="280" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="373" y="304.5" width="94" height="31" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1nmtp7b_di" bpmnElement="Gateway_1nmtp7b" isMarkerVisible="true" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="545" y="295" width="50" height="50" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000">
+          <dc:Bounds x="539" y="345" width="82" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1bk1xgn_di" bpmnElement="Activity_1bk1xgn" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="730" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="733" y="232" width="94" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0nj2lxi_di" bpmnElement="Gateway_0nj2lxi" isMarkerVisible="true" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="885" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000">
+          <dc:Bounds x="875" y="191" width="69" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0cgbw75_di" bpmnElement="Activity_0cgbw75" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="730" y="790" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="733" y="814.5" width="94" height="31" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_03ezziz_di" bpmnElement="Gateway_03ezziz" isMarkerVisible="true" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1245" y="335" width="50" height="50" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000">
+          <dc:Bounds x="1231" y="323" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1kxjfsg_di" bpmnElement="Activity_1kxjfsg" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1050" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="1053" y="232" width="94" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0eswmuf_di" bpmnElement="Activity_0eswmuf" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1050" y="330" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="1053" y="362" width="94" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1oa1g0d_di" bpmnElement="Activity_1oa1g0d" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1440" y="290" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="1443" y="306.5" width="94" height="47" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0yrhctu_di" bpmnElement="Activity_1axon19" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1690" y="290" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="1693" y="314.5" width="94" height="31" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1sszf61_di" bpmnElement="Event_1sszf61" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1952" y="312" width="36" height="36" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="1915" y="355" width="110" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0fvibi9_di" bpmnElement="Activity_0fvibi9" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1220" y="520" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="1223" y="544.5" width="94" height="31" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1y0kbbm_di" bpmnElement="Gateway_1y0kbbm" isMarkerVisible="true" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1375" y="535" width="50" height="50" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000">
+          <dc:Bounds x="1375" y="511" width="51" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0bu5ltp_di" bpmnElement="Event_0bu5ltp" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="922" y="812" width="36" height="36" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000">
+          <dc:Bounds x="899" y="855" width="83" height="31" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vqv31t_di" bpmnElement="Activity_1vqv31t" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1490" y="520" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="1493" y="544.5" width="94" height="31" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0fnyrhd_di" bpmnElement="Gateway_0fnyrhd" isMarkerVisible="true" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1675" y="535" width="50" height="50" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000">
+          <dc:Bounds x="1735" y="553" width="52" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0q0ihu6_di" bpmnElement="Activity_0q0ihu6" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1650" y="670" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="1653" y="702" width="94" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1c0e0sf_di" bpmnElement="Event_1c0e0sf" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1822" y="692" width="36" height="36" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000">
+          <dc:Bounds x="1814" y="735" width="54" height="31" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_f6aa3d18-97e5-419d-8267-4ab42519eb63" bpmnElement="_4b76be38-c790-47f5-a491-6dc8b49c9c69" isMarkerVisible="true" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1272.2132034301758" y="219.98780727386475" width="41.57359313964844" height="40.02438545227051" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="1255" y="203" width="78" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_6fc7c4a3-66a4-4467-ab2c-46e5c3777b4a" bpmnElement="_b7499f05-ae06-45f0-b90a-46beaf688a5b" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1472" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="1435" y="265" width="110" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_12k99rn_di" bpmnElement="Activity_12k99rn" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="730" y="670" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="733" y="694.5" width="94" height="31" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ksk9xz_di" bpmnElement="Event_0ksk9xz" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="932" y="682" width="36" height="36" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000">
+          <dc:Bounds x="910" y="725" width="81" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1t1vcfh_di" bpmnElement="Activity_1t1vcfh" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="690" y="560" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="693" y="592" width="94" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1uhq4ps_di" bpmnElement="Activity_1uhq4ps" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="860" y="560" width="100" height="80" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="863" y="592" width="94" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0ozjby2_di" bpmnElement="Gateway_0ozjby2" isMarkerVisible="true" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1025" y="575" width="50" height="50" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000">
+          <dc:Bounds x="1023" y="537.5" width="54" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1p1ojes_di" bpmnElement="Event_1p1ojes" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="1132" y="652" width="36" height="36" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000">
+          <dc:Bounds x="1113" y="695" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_2ad95096-02c2-467d-831b-d7a47952c087" bpmnElement="_ac9c5d4f-5b25-440c-9949-af89b9f8f106" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="716.75" y="290" width="102" height="52.20001220703125" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true">
+          <dc:Bounds x="721.75" y="292.6000061035156" width="97" height="47" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0cdzpm8_di" bpmnElement="Flow_0cdzpm8" color:border-color="#000000">
+        <di:waypoint x="276" y="320" />
+        <di:waypoint x="370" y="320" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18jy2rq_di" bpmnElement="Flow_18jy2rq" color:border-color="#000000">
+        <di:waypoint x="470" y="320" />
+        <di:waypoint x="545" y="320" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0okyipw_di" bpmnElement="Flow_0okyipw" color:border-color="#000000">
+        <di:waypoint x="570" y="295" />
+        <di:waypoint x="570" y="240" />
+        <di:waypoint x="730" y="240" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="569" y="223" width="82" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1soqotr_di" bpmnElement="Flow_1soqotr" color:border-color="#000000">
+        <di:waypoint x="570" y="345" />
+        <di:waypoint x="570" y="710" />
+        <di:waypoint x="730" y="710" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="622" y="695" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1oyi759_di" bpmnElement="Flow_1oyi759" color:border-color="#000000">
+        <di:waypoint x="570" y="345" />
+        <di:waypoint x="570" y="600" />
+        <di:waypoint x="690" y="600" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="580" y="467" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_018g5no_di" bpmnElement="Flow_018g5no" color:border-color="#000000">
+        <di:waypoint x="570" y="345" />
+        <di:waypoint x="570" y="830" />
+        <di:waypoint x="730" y="830" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="608" y="813" width="83" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19wqsnr_di" bpmnElement="Flow_19wqsnr" color:border-color="#000000">
+        <di:waypoint x="570" y="345" />
+        <di:waypoint x="570" y="440" />
+        <di:waypoint x="1080" y="440" />
+        <di:waypoint x="1080" y="410" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="722" y="413" width="80" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fthm7n_di" bpmnElement="Flow_1fthm7n" color:border-color="#000000">
+        <di:waypoint x="830" y="240" />
+        <di:waypoint x="885" y="240" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vuvida_di" bpmnElement="Flow_0vuvida" color:border-color="#000000">
+        <di:waypoint x="910" y="265" />
+        <di:waypoint x="910" y="370" />
+        <di:waypoint x="1050" y="370" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="974" y="352" width="13" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tnqrt0_di" bpmnElement="Flow_1tnqrt0" color:border-color="#000000">
+        <di:waypoint x="935" y="240" />
+        <di:waypoint x="1050" y="240" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="989" y="218" width="18" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0e7202k_di" bpmnElement="Flow_0e7202k" color:border-color="#000000">
+        <di:waypoint x="1150" y="360" />
+        <di:waypoint x="1245" y="360" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13x2blp_di" bpmnElement="Flow_13x2blp" color:border-color="#000000">
+        <di:waypoint x="1295" y="360" />
+        <di:waypoint x="1368" y="360" />
+        <di:waypoint x="1368" y="330" />
+        <di:waypoint x="1440" y="330" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="1391" y="311" width="18" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zirprz_di" bpmnElement="Flow_0zirprz" color:border-color="#000000">
+        <di:waypoint x="1270" y="385" />
+        <di:waypoint x="1270" y="520" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="1273" y="421" width="13" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dhkee1_di" bpmnElement="Flow_1dhkee1" color:border-color="#000000">
+        <di:waypoint x="1540" y="330" />
+        <di:waypoint x="1690" y="330" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1r4y559_di" bpmnElement="Flow_1r4y559" color:border-color="#000000">
+        <di:waypoint x="1790" y="330" />
+        <di:waypoint x="1952" y="330" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_033hlvl_di" bpmnElement="Flow_033hlvl" color:border-color="#000000">
+        <di:waypoint x="1400" y="585" />
+        <di:waypoint x="1400" y="710" />
+        <di:waypoint x="1650" y="710" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="1409" y="648" width="13" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lchkyh_di" bpmnElement="Flow_0lchkyh" color:border-color="#000000">
+        <di:waypoint x="1320" y="560" />
+        <di:waypoint x="1375" y="560" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0whu2j9_di" bpmnElement="Flow_0whu2j9" color:border-color="#000000">
+        <di:waypoint x="1075" y="600" />
+        <di:waypoint x="1130" y="600" />
+        <di:waypoint x="1130" y="410" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04a17a0_di" bpmnElement="Flow_04a17a0" color:border-color="#000000">
+        <di:waypoint x="830" y="830" />
+        <di:waypoint x="922" y="830" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bfi3m6_di" bpmnElement="Flow_1bfi3m6" color:border-color="#000000">
+        <di:waypoint x="1590" y="560" />
+        <di:waypoint x="1675" y="560" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0f49xvo_di" bpmnElement="Flow_0f49xvo" color:border-color="#000000">
+        <di:waypoint x="1425" y="560" />
+        <di:waypoint x="1490" y="560" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="1449" y="542" width="18" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dy4qwf_di" bpmnElement="Flow_0dy4qwf" color:border-color="#000000">
+        <di:waypoint x="1750" y="710" />
+        <di:waypoint x="1822" y="710" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gb59hd_di" bpmnElement="Flow_0gb59hd" color:border-color="#000000">
+        <di:waypoint x="1700" y="585" />
+        <di:waypoint x="1700" y="670" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="1709" y="625" width="13" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0st1t6n_di" bpmnElement="Flow_0st1t6n" color:border-color="#000000">
+        <di:waypoint x="1700" y="535" />
+        <di:waypoint x="1700" y="440" />
+        <di:waypoint x="1490" y="440" />
+        <di:waypoint x="1490" y="370" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom">
+          <dc:Bounds x="1586" y="422" width="18" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_a5ebdad0-6e2e-44be-acab-8a7da6df9e03" bpmnElement="_954ae0db-beaa-4a1c-bad5-9e4b5308d922" color:border-color="#000000">
+        <di:waypoint x="1149" y="240" />
+        <di:waypoint x="1272.2132034301758" y="240" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_26eeaacf-4b93-4189-b408-14dcfc2e7ca5" bpmnElement="_f5d60ab0-8eea-4186-b08c-59d9cafb39f1" color:border-color="#000000">
+        <di:waypoint x="1293.2132034301758" y="260.01219272613525" />
+        <di:waypoint x="1293.2132034301758" y="295.0060963630676" />
+        <di:waypoint x="1100" y="295.0060963630676" />
+        <di:waypoint x="1100" y="330" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom">
+          <dc:Bounds x="1141.606601715088" y="300.0060963630676" width="110" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_c36a72c2-d769-4ff7-81d1-e06606d9e337" bpmnElement="_3e69d3af-ed84-4a6b-b8e0-f17d8555930b" color:border-color="#000000">
+        <di:waypoint x="1314.2132034301758" y="239.78679752349854" />
+        <di:waypoint x="1472" y="240" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom">
+          <dc:Bounds x="1338.106601715088" y="244.89339876174927" width="110" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15rmq6p_di" bpmnElement="Flow_15rmq6p" color:border-color="#000000">
+        <di:waypoint x="830" y="700" />
+        <di:waypoint x="932" y="700" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0urlrpt_di" bpmnElement="Flow_0urlrpt" color:border-color="#000000">
+        <di:waypoint x="790" y="600" />
+        <di:waypoint x="860" y="600" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vryt7h_di" bpmnElement="Flow_0vryt7h" color:border-color="#000000">
+        <di:waypoint x="960" y="600" />
+        <di:waypoint x="1025" y="600" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:labelPosition="custom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1agnatt_di" bpmnElement="Flow_1agnatt" color:border-color="#000000">
+        <di:waypoint x="1050" y="625" />
+        <di:waypoint x="1050" y="670" />
+        <di:waypoint x="1132" y="670" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1c492xf_di" bpmnElement="Flow_1c492xf" color:border-color="#000000">
+        <di:waypoint x="260" y="110" />
+        <di:waypoint x="260" y="304" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ndbdc8_di" bpmnElement="Flow_1ndbdc8" color:border-color="#000000">
+        <di:waypoint x="1970" y="312" />
+        <di:waypoint x="1970" y="110" />
+        <bpmndi:BPMNLabel labelStyle="LSBPMNDiagram_1_0" color:color="#000000" triso:defaultBounds="true" triso:labelPosition="midbottom" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNLabelStyle id="LSBPMNDiagram_1_0">
+      <dc:Font name="arial,helvetica,sans-serif" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" />
+    </bpmndi:BPMNLabelStyle>
+  </bpmndi:BPMNDiagram>
+</semantic:definitions>

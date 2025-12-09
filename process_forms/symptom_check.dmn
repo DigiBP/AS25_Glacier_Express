@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_1ton1h4" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.39.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.23.0">
+  <decision id="evaluate_symptoms" name="EvaluateSymptoms" camunda:historyTimeToLive="180">
+    <informationRequirement id="InformationRequirement_0cdkipq">
+      <requiredInput href="#InputData_0qg78nm" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_16up2p6">
+      <input id="Input_1" label="symptomSeverity" biodi:width="192">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>symptomSeverity</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_11xviqb" label="symptomType" biodi:width="192">
+        <inputExpression id="LiteralExpression_1e9ukvj" typeRef="string">
+          <text>symptomType</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_16o87mu" label="symptomDuration" biodi:width="192">
+        <inputExpression id="LiteralExpression_1rfjr72" typeRef="integer">
+          <text>symptomDuration</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_17o0oyd" label="careType" name="careType" typeRef="string" biodi:width="192" />
+      <output id="Output_1" label="otcPrimaryName" name="otcPrimaryName" typeRef="string" />
+      <output id="OutputClause_0q9tg2z" label="otcPrimaryCode" name="otcPrimaryCode" typeRef="string" biodi:width="192" />
+      <output id="OutputClause_03dcp5x" label="otcAlternativeName" name="otcAlternativeName" typeRef="string" biodi:width="192" />
+      <output id="OutputClause_0brljj6" label="otcAlternativeCode" name="otcAlternativeCode" typeRef="string" />
+      <rule id="DecisionRule_0qiuvr2">
+        <inputEntry id="UnaryTests_1ilyrf1">
+          <text>"severe"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_140jalq">
+          <text>"chest pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hinw1g">
+          <text>&gt; 0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_070fl6e">
+          <text>"DOCTOR_VISIT"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03du8iu">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a73cx3">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nsjzlx">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14l2a5k">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kajkrr">
+        <inputEntry id="UnaryTests_0m01msv">
+          <text>"severe"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0otxzuf">
+          <text>"fever"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_044y2wt">
+          <text>&gt; 0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nuvuo0">
+          <text>"DOCTOR_VISIT"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cfzcl4">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0urnw2g">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xwhr6t">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_080v9lz">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1641gwc">
+        <inputEntry id="UnaryTests_1d78jxv">
+          <text>"moderate"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qn6ag5">
+          <text>"headache"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n08eaq">
+          <text>&lt;= 3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0w1vfya">
+          <text>"SELF_CARE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_062uxwe">
+          <text>"Ibuprofen"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bp12nm">
+          <text>"IBU200"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wdqrwk">
+          <text>"Paracetamol"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0384y7y">
+          <text>"PARA500"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wkboxz">
+        <inputEntry id="UnaryTests_1qg0pqj">
+          <text>"moderate"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nx136f">
+          <text>"cough"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uphnvk">
+          <text>&lt; 3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xlkqw0">
+          <text>"SELF_CARE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19pstl1">
+          <text>"Dextromethorphan"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0o3oet7">
+          <text>"DEXTRO15"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hm0mz8">
+          <text>"Guaifenesin syrup"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10niqzj">
+          <text>"GUAIF100"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1avpg9m">
+        <inputEntry id="UnaryTests_096uk04">
+          <text>"mild"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14yowr9">
+          <text>"headache"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hgzvim">
+          <text>&lt;= 3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13imdkc">
+          <text>"SELF_CARE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1iv9e2y">
+          <text>"Paracetamol"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04gq6x8">
+          <text>"PARA500"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ef23c2">
+          <text>"Ibuprofen"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dotcnd">
+          <text>"IBU200"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0erm32v">
+        <inputEntry id="UnaryTests_0x4w5jy">
+          <text>"mild"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1k6nkkl">
+          <text>"fever"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fz1cnm">
+          <text>&gt; 3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13ddy4b">
+          <text>"DOCTOR_VISIT"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_022nw11">
+          <text>"Ibuprofen"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rogvqv">
+          <text>"IBU200"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01m5472">
+          <text>"Paracetamol"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jtqlf1">
+          <text>"PARA500"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11y690v">
+        <inputEntry id="UnaryTests_04tsdj2">
+          <text>"mild"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ju7jvz">
+          <text>"allergy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lwh3a2">
+          <text>&lt;= 7</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lsz7y6">
+          <text>"SELF_CARE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0d3gsdl">
+          <text>"Cetirizine"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rk89o1">
+          <text>"CET10"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0se2ewk">
+          <text>"Loratadine"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rim021">
+          <text>"LORA10"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0qg78nm" name="Symptoms" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="evaluate_symptoms">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1qdq352" dmnElementRef="InputData_0qg78nm">
+        <dc:Bounds height="45" width="125" x="178" y="328" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_181muop" dmnElementRef="InformationRequirement_0cdkipq">
+        <di:waypoint x="241" y="328" />
+        <di:waypoint x="250" y="200" />
+        <di:waypoint x="250" y="180" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

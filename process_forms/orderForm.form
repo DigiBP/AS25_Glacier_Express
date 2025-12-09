@@ -1,0 +1,105 @@
+{
+  "components": [
+    {
+      "label": "Patient name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1wkvcln",
+        "columns": null
+      },
+      "id": "Field_0mqtqtf",
+      "key": "patientName",
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "label": "Patient email",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1jjjy90",
+        "columns": null
+      },
+      "id": "Field_0dxqr7x",
+      "key": "patientEmail",
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "label": "DOB",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_15rkutt",
+        "columns": null
+      },
+      "id": "Field_1ixtg21",
+      "key": "patientDOB",
+      "disabled": true
+    },
+    {
+      "label": "Ordered Medication",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_04fxp61",
+        "columns": null
+      },
+      "id": "Field_13a48q5",
+      "key": "orderedMedicationName",
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "label": "Symptom Summary",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_06n00t5",
+        "columns": null
+      },
+      "id": "Field_0vxul6x",
+      "key": "symptomSummary",
+      "disabled": true
+    },
+    {
+      "label": "Order Confirmation",
+      "values": [
+        {
+          "label": "Approve",
+          "value": "APPROVE"
+        },
+        {
+          "label": "Reject",
+          "value": "REJECT"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1ihtw40",
+        "columns": null
+      },
+      "id": "Field_14me8r5",
+      "key": "pharmacistApproval",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Comments",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_13ob170",
+        "columns": null
+      },
+      "id": "Field_0iua2pp",
+      "key": "pharmacistComment"
+    }
+  ],
+  "type": "default",
+  "id": "orderForm",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.39.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.23.0",
+  "schemaVersion": 19,
+  "versionTag": "160"
+}
