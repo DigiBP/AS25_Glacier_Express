@@ -152,8 +152,8 @@
     }
 
     .btn-secondary {
-      background: #e5e7eb;
-      color: #111827;
+      background: #9ca3af;
+      color: #ffffff;
     }
 
     .right-panel {
@@ -220,8 +220,7 @@
     <div class="panel-header">
       <div class="status-dot"></div>
       <div>
-        <h1>Prescription Chatbot</h1>
-        <span>Chat and upload (development version)</span>
+        <h1>DigiBP-Pharmacy Chatbot</h1>
       </div>
     </div>
     <div id="chat-log" class="chat-log"></div>
@@ -233,30 +232,20 @@
 
   <!-- Right: upload and OCR -->
   <div class="right-panel">
-    <h2>Upload your prescription</h2>
+    <h2>Prescription Upload Tool</h2>
     <p>
-      Choose an image or PDF. The text will be extracted with OCR.space and sent
-      into this same conversation automatically.
+      Upload your prescription here! Choose your file then hit Upload.
     </p>
 
     <div class="file-input-row">
       <input id="file-input" type="file" accept="image/*,.pdf" />
       <button id="upload-btn" class="btn btn-secondary" type="button">
-        Upload and extract
+        Upload Prescription
       </button>
-      <span class="small">
-        Demo only: keys are in the front-end. For production, this should go through a backend.
-      </span>
     </div>
 
-    <p>Last OCR result (for debugging):</p>
+    <p>OCR result (for debugging):</p>
     <div id="ocr-result" class="card">No file processed yet.</div>
-
-    <p class="small">
-      This page talks directly to your
-      <span class="tag">Voiceflow development version</span>
-      using one user identifier per page load, so chat and uploads share the same state in that session.
-    </p>
   </div>
 </div>
 
