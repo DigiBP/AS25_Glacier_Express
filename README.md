@@ -1,5 +1,7 @@
 # AS25_Glacier_Express  
 
+***Add section guide here
+
 ### Team Members  
 
 | Team member | Email |
@@ -10,19 +12,32 @@
 | Nemanja Arsenijevic | nemanja.arsenijevic@students.fhnw.ch |
 | Houssem Bouchemal | houssemeddine.bouchemal@students.fhnw.ch |
 
+### Login information
+- Google calendar
+- Camunda
+- Make?
+
+## Usage
+
+Need to add usage instructions here
+
+## Techonologies
+- Voiceflow
+- OCR.space
+- Camunda
+- Supabase
+- Make (Groq, SendGrid)
+- Google Calendar (FreeBusy API, Calendar API)
+- FastAPI
 
 ## Overview
-### Digital Pharmacy  
-The swiss pharmacy and drug system is similar to systems in other countries, however, there are
-some differences. In Switzerland, drugs defined as products having medicinal promise (e.g. «helps
-against headache»), can exclusively be purchased in pharmacies, rarely in «Drogerien». In Switzer-
-land, drugs are classified in several categories. The classification determines whether a product is
-available over-the-counter (OTC) or if a prescription is needed: most drugs against minor illnesses
-or aches, for example, headaches or cough, can be purchased without a prescription. Several drugs
-such as antibiotics, drugs against cancer or high dosage pain relievers can only be purchased with
-a prescription from a medical doctor.  
+### Digital Pharmacy
 
-The goal of this project is to identify processes that would benefit from digitalization and devise more efficient workflows for providing pharmaceutical services.
+Community pharmacies often experience high customer traffic, especially during peak hours. Patients may visit the pharmacy for a wide range of reasons, such as filling prescriptions, purchasing over-the-counter medications, booking services like vaccinations, or asking for general advice. Handling these requests in person can be time-consuming for both customers and pharmacy staff, leading to long waiting times and inefficient workflows.
+
+This project is motivated by the idea that a large portion of the pharmacy experience can be streamlined through digitalization. By allowing patients to complete certain steps in advance—such as describing symptoms, uploading prescriptions, selecting medications, or booking appointments—many in-pharmacy processes can be prepared or partially completed before the customer even arrives.
+
+The goal is to reduce unnecessary waiting time, improve service efficiency, and better allocate pharmacists’ time to tasks that require professional judgment. Through the use of a chatbot and integrated workflow automation, this project explores how digital tools can support pharmacies in managing common customer interactions more effectively while uploading safety requirements. 
 
 ## AS-IS Process
 
@@ -59,10 +74,9 @@ The technician administers the vaccination. Once the vaccination is provided, th
 #### Health Screening
 The technician performs the requested screening service. After the completion of the screening, the process ends.   
 
-
 ## To-Be Process
+**** Add the image of the holistic to-be process (needs updating). Explain that it is for visual purposes and is not executable. Maybe move the descriptions below to the chatbot section further down.
 
-![Chatbot process](images/Chatbot_process.png)
 ### Patient/Chatbot  
 
 The process starts when a patient initiates a chatbot interaction. The chatbot then routes the conversation based on the consultation type into one of three flows: prescription order, symptom evaluation, or appointment scheduling.  
@@ -94,19 +108,61 @@ The patient requests over-the-counter (OTC) medication via the chatbot. The phar
 #### Appointment scheduling  
 The patient requests an appointment via the chatbot. The pharmacy technician confirms the appointment and the service is performed. Afterwards, payment is collected or insurance information is confirmed, and the process ends.
 
-## Techonologies
-- Voiceflow
-- OCR.space
-- Camunda
-- Supabase
-- Make (Groq, SendGrid)
-- Google Calendar (FreeBusy API, Calendar API)
-- FastAPI
+## ChatBot
 
-## Voiceflow Knowledge Bases
+![Chatbot process](images/chatbot_process.png)
 
+### Knowledge Base (KB)
 <p align="center">
   <img src="images/medication_codes.jpg" width="auto%" height="500px"/>
   <img src="images/MedicationKB-1.jpg" width="auto" height="500px"/>
 </p>
 
+#### Objective
+The medication KB serves as structured reference that enables the chatbot to provide safe, consistent, and context-aware medication guidance. It contains information on a predefined list of medications, including medication names, unique medication codes (for database identification), indications, dosing guidelines, side effects, contraindictions, red flags, and approved alternatives. 
+
+By using the KB, the chatbot can: 
+- Recommend appropriate OTC medications when suitable
+- Identify situations where medical evaluation is required instead of self-treatment
+- Extract and pass standardized medication codes to other systems for inventory checks and process automation
+
+### Booking Appointment
+
+![voiceflow appointment](images/voiceflow_appointment.png)
+
+Need to enter a description
+
+### Symptom Evaluation and OTC order
+
+![symptom evaluation](images/voiceflow_symptom_eval.png)
+Need to enter a description
+
+### Prompt
+Using the available KB and a web search, the agent will either recommend self-treatment using OTC medication or a medical evaluation by a medical professional. The following prompt was used to help the agent make the triage decision: [Symptom Evaluation Prompt (PDF)](supplementarydocs/symptomevalprompt.pdf)
+
+### Prescription Medication Order
+
+![prescription order](images/voiceflow_prescription.png)
+Need to enter a description
+
+## Camunda Workflow
+Need to insert camunda workflow images for forms, variables received from voiceflow
+
+## Make Webhooks
+### Purchase Order
+![purchase order webhook](images/purchase_order_webhook.png)
+
+needs explanation
+
+### Appointment Scheduling
+
+![appointment scheduling](images/appointment_webhook.png)
+
+need to add explanation
+
+### Patient Email Notification
+Insert webhook image and explanation when available
+
+## Inventory Database
+
+## API Overview

@@ -136,6 +136,10 @@
       <bpmn:text>DeepNote Python API, Make Webhook, Groq, SendGrid</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_1j7q0sg" associationDirection="None" sourceRef="Activity_1e5hzjl" targetRef="TextAnnotation_1cnmu8n" />
+    <bpmn:textAnnotation id="TextAnnotation_0k9ev2h">
+      <bpmn:text>Implements: Knowledge base &amp; web search</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0amiz4u" associationDirection="None" sourceRef="Activity_0g248yn" targetRef="TextAnnotation_0k9ev2h" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0mebszt">
@@ -187,10 +191,6 @@
         <dc:Bounds x="740" y="160" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0g248yn_di" bpmnElement="Activity_0g248yn">
-        <dc:Bounds x="580" y="300" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_08hskic_di" bpmnElement="Gateway_08hskic" isMarkerVisible="true">
         <dc:Bounds x="745" y="315" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -238,6 +238,14 @@
           <dc:Bounds x="1681" y="425" width="79" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0g248yn_di" bpmnElement="Activity_0g248yn">
+        <dc:Bounds x="590" y="300" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0amiz4u_di" bpmnElement="Association_0amiz4u">
+        <di:waypoint x="607" y="380" />
+        <di:waypoint x="582" y="410" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1k73zqe_di" bpmnElement="TextAnnotation_1k73zqe">
         <dc:Bounds x="780" y="650" width="160" height="40" />
         <bpmndi:BPMNLabel />
@@ -320,10 +328,10 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1khuiv2_di" bpmnElement="Flow_1khuiv2">
         <di:waypoint x="530" y="340" />
-        <di:waypoint x="580" y="340" />
+        <di:waypoint x="590" y="340" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_152943q_di" bpmnElement="Flow_152943q">
-        <di:waypoint x="680" y="340" />
+        <di:waypoint x="690" y="340" />
         <di:waypoint x="745" y="340" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_035jura_di" bpmnElement="Flow_035jura">
@@ -408,6 +416,10 @@
         <di:waypoint x="1620" y="400" />
         <di:waypoint x="1702" y="400" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0k9ev2h_di" bpmnElement="TextAnnotation_0k9ev2h">
+        <dc:Bounds x="520" y="410" width="200" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
