@@ -19,7 +19,7 @@
 
 ## Usage
 
-Need to add usage instructions here
+** Need to add usage instructions here (e.g., start server, link to chatbot frontend page, camunda)
 
 ## Techonologies
 - Voiceflow
@@ -75,11 +75,34 @@ The technician administers the vaccination. Once the vaccination is provided, th
 The technician performs the requested screening service. After the completion of the screening, the process ends.   
 
 ## To-Be Process
-**** Add the image of the holistic to-be process (needs updating). Explain that it is for visual purposes and is not executable. Maybe move the descriptions below to the chatbot section further down.
+End-to-End Process View:
 
-### Patient/Chatbot  
+![to-be process end-to-end](images/documentation_process_model.png)
 
-The process starts when a patient initiates a chatbot interaction. The chatbot then routes the conversation based on the consultation type into one of three flows: prescription order, symptom evaluation, or appointment scheduling.  
+**** Explain that bpmn process model above is not the executable workflow model implemented in Camunda. It is for visual purposes to highlight the entire process which spans multiple systems (not all of which are require connection to Camunda). Maybe add short description for each of the sequence flows.
+
+### Camunda Workflow
+
+![to-be process](images/symptom_eval_process_simplified_v2.png)
+
+The Camunda workflow starts when the Pharmacy Digital System (Camunda) receives the request from the patient from the chatbot. Based on the request type, the process continues with one of three flows: Prescription medication ordering, OTC order, or appointment scheduling.
+
+#### Prescription medication ordering   
+A prescription uploaded by the patient via the chatbot is validated by the pharmacist. If the prescription is rejected, the patient is notified by the Pharmacy Digital System and the process ends. If it is approved, the pharmacy technician prepares the medication. Once preparation is complete, the patient is notified that the medication is ready for pickup. The pharmacist then provides patient counselling. After payment is collected or insurance information is confirmed, the medication is dispensed and the process ends.
+
+#### OTC order  
+The patient requests over-the-counter (OTC) medication via the chatbot. The pharmacy technician confirms the OTC order and prepares the medication. When preparation is complete, the patient is notified that the medication is ready for pickup. The pharmacist provides patient counselling. After payment is collected or insurance information is confirmed, the medication is dispensed and the process ends.
+
+#### Appointment scheduling  
+The patient requests an appointment via the chatbot. The pharmacy technician confirms the appointment and the service is performed. Afterwards, payment is collected or insurance information is confirmed, and the process ends.
+
+### ChatBot
+
+![Chatbot process](images/chatbot_process2.png)
+
+#### Conversation Start 
+
+The process starts when a patient initiates a chatbot interaction. The chatbot then routes the conversation based on the request type into one of three flows: prescription order, symptom evaluation, or appointment scheduling.  
 
 #### Prescription order
 
@@ -93,32 +116,13 @@ The chatbot asks the patient for a symptom description and then assesses treatme
 
 The chatbot collects the patient/appointment details and then asks for the desired date. The system then checks available appointments (via Make Webhook + Google FreeBusy API). If a suitable appointment is found, the system books the selected appointment slot (via Make Webhook + Google Calendar API) and then sends a POST request to Camunda. If no suitable appointment slot can be found, the patient is asked to enter another date/time for the appointment.
 
-### Pharmacy/Camunda  
-
-![to-be process](images/symptom_eval_process_simplified_v2.png)
-
-The process starts when the Pharmacy Digital System receives the request from the patient via the chatbot. Based on the consultation type, the process continues with one of three flows: Prescription medication ordering, OTC order, or appointment scheduling.
-
-#### Prescription medication ordering   
-A prescription uploaded by the patient via the chatbot is validated by the pharmacist. If the prescription is rejected, the patient is notified by the Pharmacy Digital System and the process ends. If it is approved, the pharmacy technician prepares the medication. Once preparation is complete, the patient is notified that the medication is ready for pickup. The pharmacist then provides patient counselling. After payment is collected or insurance information is confirmed, the medication is dispensed and the process ends.
-
-#### OTC order  
-The patient requests over-the-counter (OTC) medication via the chatbot. The pharmacy technician confirms the OTC order and prepares the medication. When preparation is complete, the patient is notified that the medication is ready for pickup. The pharmacist provides patient counselling. After payment is collected or insurance information is confirmed, the medication is dispensed and the process ends.
-
-#### Appointment scheduling  
-The patient requests an appointment via the chatbot. The pharmacy technician confirms the appointment and the service is performed. Afterwards, payment is collected or insurance information is confirmed, and the process ends.
-
-## ChatBot
-
-![Chatbot process](images/chatbot_process2.png)
-
 ### Knowledge Base (KB)
 <p align="center">
   <img src="images/medication_codes.jpg" width="auto%" height="500px"/>
   <img src="images/MedicationKB-1.jpg" width="auto" height="500px"/>
 </p>
 
-#### Objective
+#### KB Purpose
 The medication KB serves as structured reference that enables the chatbot to provide safe, consistent, and context-aware medication guidance. It contains information on a predefined list of medications, including medication names, unique medication codes (for database identification), indications, dosing guidelines, side effects, contraindictions, red flags, and approved alternatives. 
 
 By using the KB, the chatbot can: 
@@ -130,20 +134,38 @@ By using the KB, the chatbot can:
 
 ![voiceflow appointment](images/voiceflow_appointment.png)
 
-Need to enter a description
+- Chatbot Agent asks patient for their information: name, email, reason for appointment (can select from Vaccination, Consultation, or Health Screening).
+- API request is sent to Make webhook to obtain list of booked appointments
+- Javascript code block determines the available appointments based on working hours, appointment intervals (30 min per appointment), and the list of booked appointments. 
+- List of available appointments is presented to the customer
+- Customer selects a date or asks for a different date
+- Selected appiontment slot is saved to Google Calendar with Make Webhook
+- Chat ends and appointment details are sent to Camunda via API request
 
 ### Symptom Evaluation and OTC order
 
 ![symptom evaluation](images/voiceflow_symptom_eval.png)
-Need to enter a description
 
-### Prompt
+#### Symptom Evaluation Agent Prompt
 Using the available KB and a web search, the agent will either recommend self-treatment using OTC medication or a medical evaluation by a medical professional. The following prompt was used to help the agent make the triage decision: [Symptom Evaluation Prompt (PDF)](supplementarydocs/symptomevalprompt.pdf)
+
+- Agents ask customer to describe symptoms
+- Based on description a triage decision is made
+- If self=treatment is made, Inventory API is called to check if available and place purchase order in case stock is below minimum level
+- Agent provides information about the medication (safety, usage, etc.) and then requests customer information (name, email, dob, etc.) to place the order. Once obtained the order is submitted.
+- Post request sent to Camunda with order details
+- Chat ends
 
 ### Prescription Medication Order
 
 ![prescription order](images/voiceflow_prescription.png)
-Need to enter a description
+
+- Chatbot prompts customer to upload prescription using provided tool
+- Uploaded document is sent to OCR.space via API Request which extracts the prescription details using Optical Character Recognition
+- Information is sent back to Voiceflow and the user confirms it is correct
+- API Request is sent to database to check inventory (and place purchase order if necessary)
+- Agent block provides relevant information about the medication and asks user to provide their email to process the order
+- API Request sends order information to Camunda and process finishes
 
 ## Camunda Workflow
 Need to insert camunda workflow images for forms, variables received from voiceflow
@@ -152,17 +174,35 @@ Need to insert camunda workflow images for forms, variables received from voicef
 ### Purchase Order
 ![purchase order webhook](images/purchase_order_webhook.png)
 
-needs explanation
+** Ask Houssem for explanation. He implemented this part and I'm not sure exactly what Groq and SendGrid are doing. 
 
 ### Appointment Scheduling
 
 ![appointment scheduling](images/appointment_webhook.png)
+**Voiceflow sends api request to webhook. Routed based on the the required "action" (either get slots or book slot). 
+
+Get Slots Route (when "action" = get slots): 
+- Google calendar FreeBusy API is called and returns array with booked appointments
+- An Iterator is used to convert the result array into a series of bundles
+- JSON Aggregator combines the data bundles from the Iterator Module into a single, structured JSON object with keys "Start" and "End" for eaech bundle
+- The webhook response send this JSON array back to Voiceflow
+
+Book Slots (when "action" = book slots):
+- Voiceflow passes appointment details to webhook (name, email, type, date/time) and Google Calendar API is called to create the appointment
+- If successful a summary is sent back the voiceflow in the webhook response
 
 need to add explanation
 
 ### Patient Email Notification
-Insert webhook image and explanation when available
 
-## Inventory Database
+**Insert webhook image and explanation when available. Houssem said he would implement this. Get description from him
+
+## Database
+
+** Take a look at the Supabase Database and describe it a bit. I think the relevant fields for the Inventor table are: medication_name, med_code, quantity_on_hand, retail_price? (ask Houssem), supplier_id. 
+
+There are two other tables "reorder_history" and "suppliers" but I'm not sure what is relevant there as those are used in the API Houssem created.
 
 ## API Overview
+
+** Ask Houssem for details about this. It's about his DeepNote API
