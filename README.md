@@ -110,7 +110,7 @@ The patient requests an appointment via the chatbot. The pharmacy technician con
 
 ## ChatBot
 
-![Chatbot process](images/chatbot_process.png)
+![Chatbot process](images/chatbot_process2.png)
 
 ### Knowledge Base (KB)
 <p align="center">
