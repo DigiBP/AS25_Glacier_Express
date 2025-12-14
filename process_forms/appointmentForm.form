@@ -23,17 +23,6 @@
       "disabled": true
     },
     {
-      "label": "DOB",
-      "type": "textfield",
-      "layout": {
-        "row": "Row_0sqfwvg",
-        "columns": null
-      },
-      "id": "Field_0w5tzis",
-      "key": "patientDOB",
-      "disabled": true
-    },
-    {
       "label": "Requested Service",
       "type": "textfield",
       "layout": {
@@ -45,18 +34,14 @@
       "disabled": true
     },
     {
-      "subtype": "datetime",
-      "dateLabel": "Appointment Date",
-      "type": "datetime",
+      "label": "Appointment Date & Time",
+      "type": "textfield",
       "layout": {
-        "row": "Row_0lzfgcq",
+        "row": "Row_08t4s24",
         "columns": null
       },
-      "id": "Field_0zba4a8",
-      "key": "appointmentDateTime",
-      "timeLabel": "Time",
-      "timeSerializingFormat": "utc_offset",
-      "timeInterval": 15,
+      "id": "Field_12wdzac",
+      "key": "selected_appointment",
       "disabled": true
     },
     {
