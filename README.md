@@ -106,7 +106,7 @@ The patient requests an appointment via the chatbot. The pharmacy technician con
 ## Voiceflow Knowledge Bases
 
 <p align="center">
-  <img src="images/medication_codes.jpg" width="37%" height="300px"/>
-  <img src="images/MedicationKB-1.jpg" width="auto" height="300px"/>
+  <img src="images/medication_codes.jpg" width="auto%" height="500px"/>
+  <img src="images/MedicationKB-1.jpg" width="auto" height="500px"/>
 </p>
 
