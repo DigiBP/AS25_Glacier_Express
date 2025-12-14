@@ -25,6 +25,9 @@ a prescription from a medical doctor.
 The goal of this project is to identify processes that would benefit from digitalization and devise more efficient workflows for providing pharmaceutical services.
 
 ## AS-IS Process
+
+![as-is process](images/as-isV2.png)
+
 ### Patient Arrival
 
 The process begins when the patient arrives at the pharmacy. The pharmacy technician receives the patient and initiates the service interaction.
@@ -55,11 +58,11 @@ The technician administers the vaccination. Once the vaccination is provided, th
 
 #### Health Screening
 The technician performs the requested screening service. After the completion of the screening, the process ends.   
-  
 
-![as-is process](images/as-isV2.png)  
 
 ## To-Be Process
+
+![Chatbot process](images/Chatbot_process.png)
 ### Patient/Chatbot  
 
 The process starts when a patient initiates a chatbot interaction. The chatbot then routes the conversation based on the consultation type into one of three flows: prescription order, symptom evaluation, or appointment scheduling.  
@@ -76,10 +79,10 @@ The chatbot asks the patient for a symptom description and then assesses treatme
 
 The chatbot collects the patient/appointment details and then asks for the desired date. The system then checks available appointments (via Make Webhook + Google FreeBusy API). If a suitable appointment is found, the system books the selected appointment slot (via Make Webhook + Google Calendar API) and then sends a POST request to Camunda. If no suitable appointment slot can be found, the patient is asked to enter another date/time for the appointment.
 
-![Chatbot process](images/Chatbot_process.png)
-
-
 ### Pharmacy/Camunda  
+
+![to-be process](images/symptom_eval_process_simplified_v2.png)
+
 The process starts when the Pharmacy Digital System receives the request from the patient via the chatbot. Based on the consultation type, the process continues with one of three flows: Prescription medication ordering, OTC order, or appointment scheduling.
 
 #### Prescription medication ordering   
@@ -91,6 +94,19 @@ The patient requests over-the-counter (OTC) medication via the chatbot. The phar
 #### Appointment scheduling  
 The patient requests an appointment via the chatbot. The pharmacy technician confirms the appointment and the service is performed. Afterwards, payment is collected or insurance information is confirmed, and the process ends.
 
+## Techonologies
+- Voiceflow
+- OCR.space
+- Camunda
+- Supabase
+- Make (Groq, SendGrid)
+- Google Calendar (FreeBusy API, Calendar API)
+- FastAPI
 
-![to-be process](images/symptom_eval_process_simplified_v2.png)   
+## Voiceflow Knowledge Bases
+
+<p align="center">
+  <img src="images/medication_codes.jpg" width="37%" height="300px"/>
+  <img src="images/MedicationKB-1.jpg" width="auto" height="300px"/>
+</p>
 
