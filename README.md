@@ -18,10 +18,11 @@
   - [Make Webhooks](#make-webhooks)
   - [Database](#database)
   - [API Endpoints](#api-endpoints)
+  - [Key Functions](#key-functions)
   - [Notes](#notes)
 
 
-### Team Members  
+## Team Members  
 
 | Team member | Email |
 |---|---|
@@ -31,7 +32,7 @@
 | Nemanja Arsenijevic | nemanja.arsenijevic@students.fhnw.ch |
 | Houssem Bouchemal | houssemeddine.bouchemal@students.fhnw.ch |
 
-### Login Information
+## Login Information
 - Google calendar
 - Camunda
 - Make?
