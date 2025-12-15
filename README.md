@@ -95,7 +95,7 @@ The technician administers the vaccination. Once the vaccination is provided, th
 The technician performs the requested screening service. After the completion of the screening, the process ends.   
 
 ## To-Be Process
-### End-to-End Process View:
+### End-to-End Process View
 
 ![to-be process end-to-end](images/documentation_process_model.png)
 
