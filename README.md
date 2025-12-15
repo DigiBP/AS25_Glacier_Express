@@ -21,7 +21,7 @@
 
 ** Need to add usage instructions here (e.g., start server, link to chatbot frontend page, camunda)
 
-## Techonologies
+## Technologies
 - Voiceflow
 - OCR.space
 - Camunda
@@ -37,7 +37,7 @@ Community pharmacies often experience high customer traffic, especially during p
 
 This project is motivated by the idea that a large portion of the pharmacy experience can be streamlined through digitalization. By allowing patients to complete certain steps in advance—such as describing symptoms, uploading prescriptions, selecting medications, or booking appointments—many in-pharmacy processes can be prepared or partially completed before the customer even arrives.
 
-The goal is to reduce unnecessary waiting time, improve service efficiency, and better allocate pharmacists’ time to tasks that require professional judgment. Through the use of a chatbot and integrated workflow automation, this project explores how digital tools can support pharmacies in managing common customer interactions more effectively while uploading safety requirements. 
+The goal is to reduce unnecessary waiting time, improve service efficiency, and better allocate pharmacists’ time to tasks that require professional judgment. Through the use of a chatbot and integrated workflow automation, this project explores how digital tools can support pharmacies in managing common customer interactions more effectively while upholding safety requirements. 
 
 ## AS-IS Process
 
@@ -61,7 +61,7 @@ The pharmacy technician assesses the purpose of the patient’s visit. Based on 
 
 The technician checks the prescription, which is considered a knowledge-intensive task requiring human evaluation. If issues are found, the pharmacy contacts the prescribing physician to resolve them. Should the issues persist, the order is canceled and the process ends. Should the issues be resolved, the process continues and the stock gets checked. If no issues are found, the technician proceeds directly to check the stock.
 
-If the medication is available, the technician prepares the medication. Otherwise, the stock gets checked for alternative options and if the patient accepts the alternative, the medication is prepared. After the patient provides payment or insurance details, the pharmacy technician proceeds with the counseling and hands the medication over to the patient. With this, the process ends. If the alternative is rejected or no suitable alternative exists, the original medication is ordered and the process ends after ordering.
+If the medication is available, the technician prepares the medication. Otherwise, the stock gets checked for alternative options and if the patient accepts the alternative, the medication is prepared. After the patient provides payment or insurance details, the pharmacy technician proceeds with the counselling and hands the medication over to the patient. With this, the process ends. If the alternative is rejected or no suitable alternative exists, the original medication is ordered and the process ends after ordering.
 
 #### OTC Medication or Symptom Assessment
 
@@ -75,17 +75,19 @@ The technician administers the vaccination. Once the vaccination is provided, th
 The technician performs the requested screening service. After the completion of the screening, the process ends.   
 
 ## To-Be Process
-End-to-End Process View:
+### End-to-End Process View:
 
 ![to-be process end-to-end](images/documentation_process_model.png)
 
-**** Explain that bpmn process model above is not the executable workflow model implemented in Camunda. It is for visual purposes to highlight the entire process which spans multiple systems (not all of which are require connection to Camunda). Maybe add short description for each of the sequence flows.
+This BPMN process model is a visual, end-to-end representation of the digital pharmacy process across multiple participants and systems. It is not the executable workflow model implemented in Camunda. Instead, it is meant to illustrate how the overall process flows from the customer-facing digital experience through pharmacy operations, including steps that may be handled by external systems, manual activities, or integrations that are outside of Camunda’s scope. 
+
+The following sections provide a detailed walkthrough of each workflow.
 
 ### Camunda Workflow
 
 ![to-be process](images/symptom_eval_process_simplified_v2.png)
 
-The Camunda workflow starts when the Pharmacy Digital System (Camunda) receives the request from the patient from the chatbot. Based on the request type, the process continues with one of three flows: Prescription medication ordering, OTC order, or appointment scheduling.
+The Camunda workflow starts when the Pharmacy Digital System (Camunda) receives the request from the patient from via chatbot. Based on the request type, the process continues with one of three flows: Prescription medication ordering, OTC order, or appointment scheduling.
 
 #### Prescription medication ordering   
 A prescription uploaded by the patient via the chatbot is validated by the pharmacist. If the prescription is rejected, the patient is notified by the Pharmacy Digital System and the process ends. If it is approved, the pharmacy technician prepares the medication. Once preparation is complete, the patient is notified that the medication is ready for pickup. The pharmacist then provides patient counselling. After payment is collected or insurance information is confirmed, the medication is dispensed and the process ends.
@@ -123,7 +125,7 @@ The chatbot collects the patient/appointment details and then asks for the desir
 </p>
 
 #### KB Purpose
-The medication KB serves as structured reference that enables the chatbot to provide safe, consistent, and context-aware medication guidance. It contains information on a predefined list of medications, including medication names, unique medication codes (for database identification), indications, dosing guidelines, side effects, contraindictions, red flags, and approved alternatives. 
+The medication KB serves as structured reference that enables the chatbot to provide safe, consistent, and context-aware medication guidance. It contains information on a predefined list of medications, including medication names, unique medication codes (for database identification), indications, dosing guidelines, side effects, contraindications, red flags, and approved alternatives. 
 
 By using the KB, the chatbot can: 
 - Recommend appropriate OTC medications when suitable
@@ -135,11 +137,11 @@ By using the KB, the chatbot can:
 ![voiceflow appointment](images/voiceflow_appointment.png)
 
 - Chatbot Agent asks patient for their information: name, email, reason for appointment (can select from Vaccination, Consultation, or Health Screening).
-- API request is sent to Make webhook to obtain list of booked appointments
+- API request is sent to Make webhook a list of booked appointments
 - Javascript code block determines the available appointments based on working hours, appointment intervals (30 min per appointment), and the list of booked appointments. 
 - List of available appointments is presented to the customer
 - Customer selects a date or asks for a different date
-- Selected appiontment slot is saved to Google Calendar with Make Webhook
+- Selected appointment slot is saved to Google Calendar with Make Webhook
 - Chat ends and appointment details are sent to Camunda via API request
 
 ### Symptom Evaluation and OTC order
@@ -149,11 +151,11 @@ By using the KB, the chatbot can:
 #### Symptom Evaluation Agent Prompt
 Using the available KB and a web search, the agent will either recommend self-treatment using OTC medication or a medical evaluation by a medical professional. The following prompt was used to help the agent make the triage decision: [Symptom Evaluation Prompt (PDF)](supplementarydocs/symptomevalprompt.pdf)
 
-- Agents ask customer to describe symptoms
-- Based on description a triage decision is made
-- If self=treatment is made, Inventory API is called to check if available and place purchase order in case stock is below minimum level
-- Agent provides information about the medication (safety, usage, etc.) and then requests customer information (name, email, dob, etc.) to place the order. Once obtained the order is submitted.
-- Post request sent to Camunda with order details
+- Agent asks customer to describe symptoms
+- Based on description, a triage decision is made
+- If self=treatment is made, Inventory API is called to check if available and place purchase order in case stock is below the minimum level
+- Agent provides information about the medication (safety, usage, etc.) and then requests customer information (name, email, dob, etc.) to place the order. Once obtained, the order is submitted.
+- POST request is sent to Camunda with order details
 - Chat ends
 
 ### Prescription Medication Order
@@ -161,7 +163,7 @@ Using the available KB and a web search, the agent will either recommend self-tr
 ![prescription order](images/voiceflow_prescription.png)
 
 - Chatbot prompts customer to upload prescription using provided tool
-- Uploaded document is sent to OCR.space via API Request which extracts the prescription details using Optical Character Recognition
+- Uploaded document is sent to OCR.space via API Request, which extracts the prescription details using Optical Character Recognition
 - Information is sent back to Voiceflow and the user confirms it is correct
 - API Request is sent to database to check inventory (and place purchase order if necessary)
 - Agent block provides relevant information about the medication and asks user to provide their email to process the order
@@ -176,7 +178,7 @@ Need to insert camunda workflow images for forms, variables received from voicef
 
 It utilizes Groq for high-speed AI inference to generate professional, context-aware Purchase Order (PO) emails, ensuring vendors receive clear and accurate demands immediately.
 
-- Trigger: When the systems checks the stock, in parallel, it checks if the medication reorder level has been reached. The system then sends a JSON payload containing the specific medication details, the quantity needed, and supplier contact information.
+- Trigger: When the system checks the stock, in parallel, it checks if the medication reorder level has been reached. The system then sends a JSON payload containing the specific medication details, the quantity needed, and supplier contact information.
 
 - Processing:  The system utilizes the Groq API (likely running Llama 3 or Mixtral) to draft a formal business email.
 
@@ -205,17 +207,17 @@ The Groq LLM is configured with a system prompt designed for professional busine
 ### Appointment Scheduling
 
 ![appointment scheduling](images/appointment_webhook.png)
-**Voiceflow sends api request to webhook. Routed based on the the required "action" (either get slots or book slot). 
+**Voiceflow sends API request to webhook. Routed based on the required "action" (either get slots or book slot). 
 
 Get Slots Route (when "action" = get slots): 
-- Google calendar FreeBusy API is called and returns array with booked appointments
+- Google calendar FreeBusy API is called and returns an array with booked appointments
 - An Iterator is used to convert the result array into a series of bundles
-- JSON Aggregator combines the data bundles from the Iterator Module into a single, structured JSON object with keys "Start" and "End" for eaech bundle
-- The webhook response send this JSON array back to Voiceflow
+- JSON Aggregator combines the data bundles from the Iterator Module into a single, structured JSON object with keys "Start" and "End" for each bundle
+- The webhook response sends this JSON array back to Voiceflow
 
 Book Slots (when "action" = book slots):
 - Voiceflow passes appointment details to webhook (name, email, type, date/time) and Google Calendar API is called to create the appointment
-- If successful a summary is sent back the voiceflow in the webhook response
+- If successful, a summary is sent back to Voiceflow in the webhook response
 
 need to add explanation
 
@@ -232,7 +234,7 @@ The pipeline consists of three synchronous stages:
 - Processing (LLM Inference): Uses OpenAI to interpret the is_rejected boolean flag and generate the appropriate email body.
 - Delivery (SendGrid): Dispatches the formatted email to the patient.
 
-The AI Agent (OpenAI Chat Completion) acts as the logic router and content writer. it relies on the following system prompt structure:
+The AI Agent (OpenAI Chat Completion) acts as the logic router and content writer. It relies on the following system prompt structure:
   >You are a system that generates transactional healthcare emails.
   >
   >Generate a professional email using the input below.
