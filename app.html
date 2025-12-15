@@ -440,6 +440,10 @@
       const text = await runOCR(file);
       ocrResultBox.textContent = text || "Empty OCR result.";
 
+       const wrappedMessage =
+      "Here is the OCR text from an uploaded prescription. Extract medication name(s), dosage, frequency, and any special instructions.\n\n" +
+      text;
+
       await sendToVoiceflow(wrappedMessage, false);
       addMessage("system", "Prescription uploaded. I am processing it now.");
     } catch (error) {
@@ -456,7 +460,7 @@
 
   // Initial system message
   (function init() {
-    addMessage("system", "Type below or upload a prescription to begin.");
+    addMessage("system", "Type Below to Start.");
   })();
 </script>
 </body>
