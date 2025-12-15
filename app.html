@@ -445,7 +445,6 @@
       text;
 
       await sendToVoiceflow(wrappedMessage, false);
-      addMessage("system", "Prescription uploaded. I am processing it now.");
     } catch (error) {
       console.error("OCR error:", error);
       addMessage(
