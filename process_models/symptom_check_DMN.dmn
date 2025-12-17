@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_1ton1h4" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.39.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.23.0">
-  <decision id="evaluate_symptoms" name="EvaluateSymptoms" camunda:historyTimeToLive="180">
-    <informationRequirement id="InformationRequirement_0cdkipq">
-      <requiredInput href="#InputData_0qg78nm" />
-    </informationRequirement>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_1ton1h4" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.39.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.23.0">
+  <decision id="evaluate_symptoms" name="Evaluate Symptoms" camunda:historyTimeToLive="5">
     <decisionTable id="DecisionTable_16up2p6">
-      <input id="Input_1" label="symptomSeverity" biodi:width="192">
+      <input id="Input_1" label="symptomSeverity">
         <inputExpression id="InputExpression_1" typeRef="string">
-          <text>symptomSeverity</text>
+          <text></text>
         </inputExpression>
       </input>
-      <input id="InputClause_11xviqb" label="symptomType" biodi:width="192">
+      <input id="InputClause_11xviqb" label="symptomType">
         <inputExpression id="LiteralExpression_1e9ukvj" typeRef="string">
-          <text>symptomType</text>
+          <text></text>
         </inputExpression>
       </input>
       <input id="InputClause_16o87mu" label="symptomDuration" biodi:width="192">
         <inputExpression id="LiteralExpression_1rfjr72" typeRef="integer">
-          <text>symptomDuration</text>
+          <text></text>
         </inputExpression>
       </input>
-      <output id="OutputClause_17o0oyd" label="careType" name="careType" typeRef="string" biodi:width="192" />
-      <output id="Output_1" label="otcPrimaryName" name="otcPrimaryName" typeRef="string" />
-      <output id="OutputClause_0q9tg2z" label="otcPrimaryCode" name="otcPrimaryCode" typeRef="string" biodi:width="192" />
-      <output id="OutputClause_03dcp5x" label="otcAlternativeName" name="otcAlternativeName" typeRef="string" biodi:width="192" />
-      <output id="OutputClause_0brljj6" label="otcAlternativeCode" name="otcAlternativeCode" typeRef="string" />
+      <output id="OutputClause_17o0oyd" label="careType" typeRef="string" />
+      <output id="Output_1" label="otcPrimaryName" typeRef="string" />
+      <output id="OutputClause_0q9tg2z" label="otcPrimaryCode" typeRef="string" />
+      <output id="OutputClause_03dcp5x" label="otcAlternativeName" typeRef="string" />
+      <output id="OutputClause_0brljj6" label="otcAlternativeCode" typeRef="string" />
       <rule id="DecisionRule_0qiuvr2">
         <inputEntry id="UnaryTests_1ilyrf1">
           <text>"severe"</text>
@@ -39,16 +36,16 @@
           <text>"DOCTOR_VISIT"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_03du8iu">
-          <text></text>
+          <text>-</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1a73cx3">
-          <text></text>
+          <text>-</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nsjzlx">
-          <text></text>
+          <text>-</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14l2a5k">
-          <text></text>
+          <text>-</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0kajkrr">
@@ -65,16 +62,16 @@
           <text>"DOCTOR_VISIT"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0cfzcl4">
-          <text></text>
+          <text>-</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0urnw2g">
-          <text></text>
+          <text>-</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0xwhr6t">
-          <text></text>
+          <text>-</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_080v9lz">
-          <text></text>
+          <text>-</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1641gwc">
@@ -209,20 +206,11 @@
       </rule>
     </decisionTable>
   </decision>
-  <inputData id="InputData_0qg78nm" name="Symptoms" />
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
       <dmndi:DMNShape dmnElementRef="evaluate_symptoms">
         <dc:Bounds height="80" width="180" x="160" y="100" />
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="DMNShape_1qdq352" dmnElementRef="InputData_0qg78nm">
-        <dc:Bounds height="45" width="125" x="178" y="328" />
-      </dmndi:DMNShape>
-      <dmndi:DMNEdge id="DMNEdge_181muop" dmnElementRef="InformationRequirement_0cdkipq">
-        <di:waypoint x="241" y="328" />
-        <di:waypoint x="250" y="200" />
-        <di:waypoint x="250" y="180" />
-      </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
 </definitions>

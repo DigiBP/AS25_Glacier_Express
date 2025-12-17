@@ -107,18 +107,18 @@ The following sections provide a detailed walkthrough of each workflow.
 
 ![to-be process](images/symptom_eval_process_simplified_v2.png)
 
-The Camunda workflow starts when the Pharmacy Digital System (Camunda) receives the request from the patient from via chatbot. Based on the request type, the process continues with one of three flows: Prescription medication ordering, OTC order, or appointment scheduling.
+The Camunda workflow starts when the Pharmacy Digital System (Camunda) receives structured patient/request data from the chatbot. Based on the request type, the process continues through one of three flows: Prescription medication ordering, OTC order, or Appointment scheduling.
 
 #### Prescription medication ordering   
-A prescription uploaded by the patient via the chatbot is validated by the pharmacist. If the prescription is rejected, the patient is notified by the Pharmacy Digital System and the process ends. If it is approved, the pharmacy technician prepares the medication. Once preparation is complete, the patient is notified that the medication is ready for pickup. The pharmacist then provides patient counselling. After payment is collected or insurance information is confirmed, the medication is dispensed and the process ends.
+A prescription uploaded by the patient via the chatbot is validated by the pharmacist. If the prescription is rejected, the patient is notified by via Email and the process ends. If approved, the pharmacy technician prepares the medication. Once preparation is complete, an email notification is sent to the customer informing order is ready for collection. The pharmacist then provides patient counselling. After payment is collected or insurance information is confirmed, the medication is dispensed and the process ends.
 
 #### OTC order  
-The patient requests over-the-counter (OTC) medication via the chatbot. The pharmacy technician confirms the OTC order and prepares the medication. When preparation is complete, the patient is notified that the medication is ready for pickup. The pharmacist provides patient counselling. After payment is collected or insurance information is confirmed, the medication is dispensed and the process ends.
+The pharmacy technician confirms the OTC order and prepares the medication. When preparation is complete, the patient is notified that the medication is ready for pickup. The pharmacist provides patient counselling. After payment is collected or insurance information is confirmed, the medication is dispensed and the process ends.
 
 #### Appointment scheduling  
-The patient requests an appointment via the chatbot. The pharmacy technician confirms the appointment and the service is performed. Afterwards, payment is collected or insurance information is confirmed, and the process ends.
+The pharmacy technician confirms the appointment and the service is performed. Afterwards, payment is collected or insurance information is confirmed, and the process ends.
 
-### ChatBot
+### ChatBot Workflow
 
 ![Chatbot process](images/chatbot_process2.png)
 
@@ -138,6 +138,7 @@ The chatbot asks the patient for a symptom description and then assesses treatme
 
 The chatbot collects the patient/appointment details and then asks for the desired date. The system then checks available appointments (via Make Webhook + Google FreeBusy API). If a suitable appointment is found, the system books the selected appointment slot (via Make Webhook + Google Calendar API) and then sends a POST request to Camunda. If no suitable appointment slot can be found, the patient is asked to enter another date/time for the appointment.
 
+## Voiceflow Implementation
 ### Knowledge Base (KB)
 <p align="center">
   <img src="images/medication_codes.jpg" width="auto%" height="500px"/>
@@ -152,13 +153,18 @@ By using the KB, the chatbot can:
 - Identify situations where medical evaluation is required instead of self-treatment
 - Extract and pass standardized medication codes to other systems for inventory checks and process automation
 
+#### Decision Modeling (not implemented in final solution)
+We explored DMN, but symptom evaluation via decision tables depends on exact input matches. In a chatbot, users may describe their symptoms in many ways, making strict table lookups fragile. Consequently, we switched to Voiceflow LLM Agent + KB approach described above.
+
+![symptom evaluation dmn](images/symptom_eval_dmn.png)
+
 ### Booking Appointment
 
 ![voiceflow appointment](images/voiceflow_appointment.png)
 
 - Chatbot Agent asks patient for their information: name, email, reason for appointment (can select from Vaccination, Consultation, or Health Screening).
 - API request is sent to Make webhook a list of booked appointments
-- Javascript code block determines the available appointments based on working hours, appointment intervals (30 min per appointment), and the list of booked appointments. 
+- [JavaScript code block](supplementarydocs/scheduling.js) determines the available appointments based on working hours, appointment intervals (30 min per appointment), and the list of booked appointments.
 - List of available appointments is presented to the customer
 - Customer selects a date or asks for a different date
 - Selected appointment slot is saved to Google Calendar with Make Webhook
@@ -168,15 +174,13 @@ By using the KB, the chatbot can:
 
 ![symptom evaluation](images/voiceflow_symptom_eval.png)
 
-#### Symptom Evaluation Agent Prompt
 Using the available KB and a web search, the agent will either recommend self-treatment using OTC medication or a medical evaluation by a medical professional. The following prompt was used to help the agent make the triage decision: [Symptom Evaluation Prompt (PDF)](supplementarydocs/symptomevalprompt.pdf)
 
 - Agent asks customer to describe symptoms
 - Based on description, a triage decision is made
-- If self=treatment is made, Inventory API is called to check if available and place purchase order in case stock is below the minimum level
-- Agent provides information about the medication (safety, usage, etc.) and then requests customer information (name, email, dob, etc.) to place the order. Once obtained, the order is submitted.
+- If "self_treatment" decision, Inventory API is called to check if recommended medication is available. 
+- An agent block provides information about the medication (safety, usage, etc.) and then requests customer information (name, email, dob, etc.) to process the order. Once obtained, the order is submitted.
 - POST request is sent to Camunda with order details
-- Chat ends
 
 ### Prescription Medication Order
 
@@ -189,8 +193,18 @@ Using the available KB and a web search, the agent will either recommend self-tr
 - Agent block provides relevant information about the medication and asks user to provide their email to process the order
 - API Request sends order information to Camunda and process finishes
 
-## Camunda Workflow
-Need to insert camunda workflow images for forms, variables received from voiceflow
+## Camunda Forms
+<p align="center">
+  <img src="images/appointmentForm.png" width="auto%" height="400px%"/>
+  <img src="images/prescriptionForm.png" width="auto%" height="400px%"/>
+</p>
+
+<p align="center">
+  <img src="images/otcForm.png" width="auto%" height="400px"/>
+  <img src="images/paymentForm.png" width="50%" height="400px"/>
+</p>
+
+Upon successful completion of a Voiceflow chat sequence, data lands in the pharmacy queue (Camunda workflow) and the relevant form is automatically filled (OTC, Prescription, Appointment). 
 
 ## Make Webhooks
 ### Purchase Order
@@ -227,7 +241,8 @@ The Groq LLM is configured with a system prompt designed for professional busine
 ### Appointment Scheduling
 
 ![appointment scheduling](images/appointment_webhook.png)
-**Voiceflow sends API request to webhook. Routed based on the required "action" (either get slots or book slot). 
+
+Webhook Start: Voiceflow sends API request to webhook. Routed based on supplied "action" variable. 
 
 Get Slots Route (when "action" = get slots): 
 - Google calendar FreeBusy API is called and returns an array with booked appointments
@@ -238,8 +253,6 @@ Get Slots Route (when "action" = get slots):
 Book Slots (when "action" = book slots):
 - Voiceflow passes appointment details to webhook (name, email, type, date/time) and Google Calendar API is called to create the appointment
 - If successful, a summary is sent back to Voiceflow in the webhook response
-
-need to add explanation
 
 ### Patient Email Notification
 
