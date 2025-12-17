@@ -140,7 +140,7 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${pharmacistApproval == "REJECT"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0tm7nmx" name="yes" sourceRef="Gateway_14l5p4w" targetRef="Activity_1mlawvn">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${pharmacistApproval == "APPROVED"}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${pharmacistApproval == "APPROVE"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0ttsuu9" sourceRef="StartEvent_1" targetRef="Gateway_0bj5ycz" />
     <bpmn:sequenceFlow id="Flow_0rzcxc1" name="prescription" sourceRef="Gateway_0bj5ycz" targetRef="Activity_1j82adl">
@@ -162,6 +162,21 @@
     <bpmn:serviceTask id="Activity_114s51b" name="Update Stocks">
       <bpmn:extensionElements>
         <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="url">https://4337a8e3-98a6-4061-a570-0c3c734ce2f0.deepnoteproject.com</camunda:inputParameter>
+            <camunda:inputParameter name="method">POST</camunda:inputParameter>
+            <camunda:inputParameter name="payload">out = JSON.stringify(
+{
+    "medication_name": orderedMedicationName,
+  "quantity": dispensingAmount
+}
+};</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
           <camunda:connectorId>HTTP JSON</camunda:connectorId>
         </camunda:connector>
         <camunda:inputOutput>

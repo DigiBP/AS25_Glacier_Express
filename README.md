@@ -47,7 +47,7 @@
 - Camunda
 - Supabase
 - Make (Groq, SendGrid)
-- Google Calendar (FreeBusy API, Calendar API)
+- Google Calendar (FreeBusy & Event API)
 - FastAPI
 
 ## Overview
