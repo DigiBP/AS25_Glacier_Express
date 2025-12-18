@@ -58,25 +58,25 @@
 | Houssem Bouchemal | houssemeddine.bouchemal@students.fhnw.ch |
 
 ## Login Information
-- Google Calendar: -- Username: glacierexpresspharmacy@gmail.com -- Password: GlacierExpress2025
-- Camunda: -- Username: mi25glacier -- Password: password
-- Make - Notify customer scenario : https://eu2.make.com/public/shared-scenario/k9RWTgtWkVX/notify-customer-with-groq
-- Supplier Email: -- dbhp.supplier@proton.me -- Password: @Dbph@2025!!!
-- Make - Notify supplier scenario : https://eu2.make.com/public/shared-scenario/mR4QPYl5L2S/pharmacy-reorder-email-with-groq
-- Make - Appointment scenario: https://eu1.make.com/public/shared-scenario/1CzhQIuB2Of/integration-webhooks
-- Link to deepnote : https://deepnote.com/workspace/FHNW-a5c4e531-3269-49f5-a2ac-bf9e3a96edaf/project/DBPH-Check-Stocks-Web-Service-4337a8e3-98a6-4061-a570-0c3c734ce2f0?utm_content=4337a8e3-98a6-4061-a570-0c3c734ce2f0
+- [Google Calendar](https://calendar.google.com/calendar): -- Username: glacierexpresspharmacy@gmail.com -- Password: GlacierExpress2025
+- [Camunda](https://digibp.engine.martinlab.science/camunda/app/welcome/default/#!/login) -- Username: mi25glacier -- Password: password
+- [Make - Notify customer scenario](https://eu2.make.com/public/shared-scenario/k9RWTgtWkVX/notify-customer-with-groq)
+- [Make - Notify supplier scenario](https://eu2.make.com/public/shared-scenario/mR4QPYl5L2S/pharmacy-reorder-email-with-groq)
+- [Make - Appointment scenario](https://eu1.make.com/public/shared-scenario/1CzhQIuB2Of/integration-webhooks)
+- [Deepnote Server & API](https://deepnote.com/workspace/FHNW-a5c4e531-3269-49f5-a2ac-bf9e3a96edaf/project/DBPH-Check-Stocks-Web-Service-4337a8e3-98a6-4061-a570-0c3c734ce2f0?utm_content=4337a8e3-98a6-4061-a570-0c3c734ce2f0)
+- [Supplier Email](https://account.proton.me/mail) -- Username: dbhp.supplier@proton.me -- Password: @Dbph@2025!!!
 
 ## Usage
 
-1. Nagivate to DeepNote "Stock Fast API" notebook and run the script to start the server.
+1. Nagivate to [Deepnote Server & API](https://deepnote.com/workspace/FHNW-a5c4e531-3269-49f5-a2ac-bf9e3a96edaf/project/DBPH-Check-Stocks-Web-Service-4337a8e3-98a6-4061-a570-0c3c734ce2f0?utm_content=4337a8e3-98a6-4061-a570-0c3c734ce2f0) notebook and run the script to start the server.
 
 2. Access Chatbot: https://digibp.github.io/AS25_Glacier_Express/app.html 
 
-- Start a conversation by entering some text and choose from one of the three options/services.
+- **** Start a conversation by entering some text and choose from one of the three options/services.
 
-- Note: For the prescription upload use this [Sample Prescription(PDF)](supplementarydocs/sample_prescription.pdf) 
+- **** Note: For the prescription upload use this [Sample Prescription(PDF)](supplementarydocs/sample_prescription.pdf) 
 
-4. When the Chatbot interaction is finished, login to Camunda to see the workflow.
+4. When the Chatbot interaction is finished, login to [Camunda](https://digibp.engine.martinlab.science/camunda/app/welcome/default/#!/login) to see the workflow.
 
 5. For customer/supplier email and Calendar viewing, login to the respective app using the login info provided above.
 
