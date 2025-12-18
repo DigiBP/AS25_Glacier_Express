@@ -59,24 +59,31 @@
       "disabled": true
     },
     {
-      "label": "Order Confirmation",
-      "values": [
-        {
-          "label": "Approve",
-          "value": "APPROVE"
-        },
-        {
-          "label": "Reject",
-          "value": "REJECT"
-        }
-      ],
-      "type": "select",
+      "label": "Amount to Dispense",
+      "type": "textfield",
       "layout": {
-        "row": "Row_1ihtw40",
+        "row": "Row_0rkb8wa",
         "columns": null
       },
-      "id": "Field_14me8r5",
-      "key": "pharmacistApproval",
+      "id": "Field_0uvvfiy",
+      "key": "dispensingAmount",
+      "disabled": true
+    },
+    {
+      "label": "Radio group",
+      "values": [
+        {
+          "label": "Confirm Order",
+          "value": "CONFIRMED"
+        }
+      ],
+      "type": "radio",
+      "layout": {
+        "row": "Row_1yb6wel",
+        "columns": null
+      },
+      "id": "Field_1mk20fz",
+      "key": "confirmOrder",
       "validate": {
         "required": true
       }
@@ -89,7 +96,7 @@
         "columns": null
       },
       "id": "Field_0iua2pp",
-      "key": "pharmacistComment"
+      "key": "pharmacistComments"
     }
   ],
   "type": "default",

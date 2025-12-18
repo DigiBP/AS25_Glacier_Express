@@ -111,7 +111,7 @@
           <camunda:inputOutput>
             <camunda:inputParameter name="url">https://hook.eu2.make.com/cb32ofnlhcaqup5goaia42pkwy72pk94</camunda:inputParameter>
             <camunda:inputParameter name="method">POST</camunda:inputParameter>
-            <camunda:inputParameter name="playload">
+            <camunda:inputParameter name="payload">
               <camunda:script scriptFormat="Javascript">out = JSON.stringify(
 {
   "eventType": "ORDER_REJECTED",
@@ -163,30 +163,24 @@
       <bpmn:extensionElements>
         <camunda:connector>
           <camunda:inputOutput>
-            <camunda:inputParameter name="url">https://4337a8e3-98a6-4061-a570-0c3c734ce2f0.deepnoteproject.com</camunda:inputParameter>
+            <camunda:inputParameter name="url">https://4337a8e3-98a6-4061-a570-0c3c734ce2f0.deepnoteproject.com/dispense</camunda:inputParameter>
             <camunda:inputParameter name="method">POST</camunda:inputParameter>
-            <camunda:inputParameter name="payload">out = JSON.stringify(
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="Javascript">out = JSON.stringify(
 {
-    "medication_name": orderedMedicationName,
+  "med_code": orderedMedicationName,
   "quantity": dispensingAmount
 }
-};</camunda:inputParameter>
+);</camunda:script>
+            </camunda:inputParameter>
             <camunda:inputParameter name="headers">
               <camunda:map>
                 <camunda:entry key="Content-Type">application/json</camunda:entry>
               </camunda:map>
             </camunda:inputParameter>
           </camunda:inputOutput>
-          <camunda:connectorId>HTTP JSON</camunda:connectorId>
+          <camunda:connectorId>http-connector</camunda:connectorId>
         </camunda:connector>
-        <camunda:inputOutput>
-          <camunda:inputParameter name="url">https://4337a8e3-98a6-4061-a570-0c3c734ce2f0.deepnoteproject.com</camunda:inputParameter>
-          <camunda:inputParameter name="method">"POST"</camunda:inputParameter>
-          <camunda:inputParameter name="body">={
-    "medication_name": orderedMedicationName,
-  "quantity": dispensingAmount
-}</camunda:inputParameter>
-        </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_11mxupy</bpmn:incoming>
       <bpmn:outgoing>Flow_0g07a4w</bpmn:outgoing>
