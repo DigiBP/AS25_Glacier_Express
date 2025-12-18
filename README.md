@@ -1,24 +1,49 @@
 # AS25_Glacier_Express  
 
   
-- [Team Members](#team-members)
-- [Login Information](#login-information)
-- [Usage](#usage)
-- [Technologies](#technologies)
-- [Overview](#overview)
-- [AS-IS Process](#as-is-process)
-- [To-Be Process](#to-be-process)
-  - [End-to-End Process View](#end-to-end-process-view)
-  - [Camunda Workflow](#camunda-workflow)
-  - [ChatBot](#chatbot)
-  - [Knowledge Base (KB)](#knowledge-base-kb)
-  - [Booking Appointment](#booking-appointment)
-  - [Symptom Evaluation and OTC order](#symptom-evaluation-and-otc-order)
-  - [Prescription Medication Order](#prescription-medication-order)
+- [AS25\_Glacier\_Express](#as25_glacier_express)
+  - [Team Members](#team-members)
+  - [Login Information](#login-information)
+  - [Usage](#usage)
+  - [Technologies](#technologies)
+  - [Overview](#overview)
+    - [Digital Pharmacy](#digital-pharmacy)
+  - [AS-IS Process](#as-is-process)
+    - [Patient Arrival](#patient-arrival)
+    - [Assessment of Patient Needs](#assessment-of-patient-needs)
+      - [Prescription or Refill](#prescription-or-refill)
+      - [OTC Medication or Symptom Assessment](#otc-medication-or-symptom-assessment)
+      - [Vaccination Service](#vaccination-service)
+      - [Health Screening](#health-screening)
+  - [To-Be Process](#to-be-process)
+    - [End-to-End Process View](#end-to-end-process-view)
+    - [Camunda Workflow](#camunda-workflow)
+      - [Prescription medication ordering](#prescription-medication-ordering)
+      - [OTC order](#otc-order)
+      - [Appointment scheduling](#appointment-scheduling)
+    - [ChatBot Workflow](#chatbot-workflow)
+      - [Conversation Start](#conversation-start)
+      - [Prescription order](#prescription-order)
+      - [Symptom evaluation](#symptom-evaluation)
+      - [Appointment scheduling](#appointment-scheduling-1)
+  - [Voiceflow Implementation](#voiceflow-implementation)
+    - [Knowledge Base (KB)](#knowledge-base-kb)
+      - [KB Purpose](#kb-purpose)
+      - [Decision Modeling (not implemented in final solution)](#decision-modeling-not-implemented-in-final-solution)
+    - [Booking Appointment](#booking-appointment)
+    - [Symptom Evaluation and OTC order](#symptom-evaluation-and-otc-order)
+    - [Prescription Medication Order](#prescription-medication-order)
+  - [Camunda Forms](#camunda-forms)
   - [Make Webhooks](#make-webhooks)
+    - [Purchase Order](#purchase-order)
+    - [Appointment Scheduling](#appointment-scheduling-2)
+    - [Patient Email Notification](#patient-email-notification)
   - [Database](#database)
+    - [A. pharmacy\_inventory](#a-pharmacy_inventory)
+    - [B. suppliers](#b-suppliers)
+    - [C. reorder\_history](#c-reorder_history)
+    - [Entity Relationships](#entity-relationships)
   - [API Endpoints](#api-endpoints)
-  - [Key Functions](#key-functions)
   - [Notes](#notes)
 
 
@@ -35,8 +60,9 @@
 ## Login Information
 - Google Calendar: -- Username: glacierexpresspharmacy@gmail.com -- Password: GlacierExpress2025
 - Camunda: -- Username: mi25glacier -- Password: password
-- Make:
-- Proton.me Email: 
+- Make - Notify customer scenario : https://eu2.make.com/public/shared-scenario/k9RWTgtWkVX/notify-customer-with-groq
+- Supplier Email: -- dbhp.supplier@proton.me -- Password: @Dbph@2025!!!
+- Make - Notify supplier scenario : https://eu2.make.com/public/shared-scenario/mR4QPYl5L2S/pharmacy-reorder-email-with-groq
 
 ## Usage
 
