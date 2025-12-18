@@ -33,13 +33,26 @@
 | Houssem Bouchemal | houssemeddine.bouchemal@students.fhnw.ch |
 
 ## Login Information
-- Google calendar
-- Camunda
-- Make?
+- Google Calendar: -- Username: glacierexpresspharmacy@gmail.com -- Password: GlacierExpress2025
+- Camunda: -- Username: mi25glacier -- Password: password
+- Make:
+- Proton.me Email: 
 
 ## Usage
 
-** Need to add usage instructions here (e.g., start server, link to chatbot frontend page, camunda)
+1. Nagivate to DeepNote "Stock Fast API" notebook and run the script to start the server.
+
+2. Access Chatbot: https://digibp.github.io/AS25_Glacier_Express/app.html 
+
+- Start a conversation by entering some text and choose from one of the three options/services.
+
+- Note: For the prescription upload use this [Sample Prescription(PDF)](supplementarydocs/sample_prescription.pdf) 
+
+4. When the Chatbot interaction is finished, login to Camunda to see the workflow.
+
+5. For customer/supplier email and Calendar viewing, login to the respective app using the login info provided above.
+
+Note: In case of issues, restart the server in DeepNote and ensure Make scenarios are active.
 
 ## Technologies
 - Voiceflow
@@ -158,10 +171,11 @@ We explored DMN, but symptom evaluation via decision tables depends on exact inp
 
 ![symptom evaluation dmn](images/symptom_eval_dmn.png)
 
-### Booking Appointment
+### Booking Appointment 
 
 ![voiceflow appointment](images/voiceflow_appointment.png)
 
+[Appointment Demo (mp4)](videos/appointmentDemo.mp4)
 - Chatbot Agent asks patient for their information: name, email, reason for appointment (can select from Vaccination, Consultation, or Health Screening).
 - API request is sent to Make webhook a list of booked appointments
 - [JavaScript code block](supplementarydocs/scheduling.js) determines the available appointments based on working hours, appointment intervals (30 min per appointment), and the list of booked appointments.
@@ -174,6 +188,8 @@ We explored DMN, but symptom evaluation via decision tables depends on exact inp
 
 ![symptom evaluation](images/voiceflow_symptom_eval.png)
 
+[Symptom Evaluation Demo (mp4)](videos/otcOrderDemo.mp4mp4)
+
 Using the available KB and a web search, the agent will either recommend self-treatment using OTC medication or a medical evaluation by a medical professional. The following prompt was used to help the agent make the triage decision: [Symptom Evaluation Prompt (PDF)](supplementarydocs/symptomevalprompt.pdf)
 
 - Agent asks customer to describe symptoms
@@ -185,6 +201,8 @@ Using the available KB and a web search, the agent will either recommend self-tr
 ### Prescription Medication Order
 
 ![prescription order](images/voiceflow_prescription.png)
+
+[Prescription Upload Demo (mp4)](videos/prescriptionOrderDemo.mp4)
 
 - Chatbot prompts customer to upload prescription using provided tool
 - Uploaded document is sent to OCR.space via API Request, which extracts the prescription details using Optical Character Recognition
