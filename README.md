@@ -63,6 +63,7 @@
 - Make - Notify customer scenario : https://eu2.make.com/public/shared-scenario/k9RWTgtWkVX/notify-customer-with-groq
 - Supplier Email: -- dbhp.supplier@proton.me -- Password: @Dbph@2025!!!
 - Make - Notify supplier scenario : https://eu2.make.com/public/shared-scenario/mR4QPYl5L2S/pharmacy-reorder-email-with-groq
+- Make - Appointment scenario: https://eu1.make.com/public/shared-scenario/1CzhQIuB2Of/integration-webhooks
 - Link to deepnote : https://deepnote.com/workspace/FHNW-a5c4e531-3269-49f5-a2ac-bf9e3a96edaf/project/DBPH-Check-Stocks-Web-Service-4337a8e3-98a6-4061-a570-0c3c734ce2f0?utm_content=4337a8e3-98a6-4061-a570-0c3c734ce2f0
 
 ## Usage
